@@ -3,7 +3,7 @@
     "name": "immer",
     "description": "A very interesting project.",
     "slug": "immer",
-    "privacy": "privet",
+    "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
