@@ -15,7 +15,7 @@ import { Ionicons, Octicons,AntDesign } from '@expo/vector-icons';
 // import { Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
-
+import GetContact from '../components/getContact';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -69,15 +69,7 @@ export default class HomeScreen extends React.Component {
 
 
 
-
-    <Octicons name="chevron-up" size={250} color="green"  style={{marginLeft: 120}}/>
-    <TextInput
-          style={{height: 50, marginLeft:100}}
-          value = "Type here to translate!"
-          editable = {false}
-        />
-
- <Octicons name="chevron-down" size={250} color="green"   style={{marginLeft: 120}}/>
+<GetContact />
 
 
       </View>
