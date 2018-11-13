@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import { Button } from 'react-native-elements';
 import { WebBrowser } from "expo";
 
 import { MonoText } from "../components/StyledText";
@@ -46,11 +47,23 @@ export default class HomeScreen extends React.Component {
               <MonoText style={styles.codeHighlightText}>
                 screens/HomeScreen.js
               </MonoText>
+
             </View>
 
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              Welcome again to immer-ready app
             </Text>
+
+          </View>
+          <View>
+             <Button title='Get contacts'/>
+          </View>
+          <View>
+            <Button
+              title='Send Location'/>
+          </View>
+          <View>
+            <Button title='Call Contact'/>
           </View>
 
           <View style={styles.helpContainer}>
@@ -64,6 +77,9 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
         </ScrollView>
+
+
+
 
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>Hello just test the changes</Text>
