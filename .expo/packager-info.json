@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 11597,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://ea-69x.anonymous.immer-ready.exp.direct",
   "packagerNgrokUrl": "https://packager.ea-69x.anonymous.immer-ready.exp.direct",
-  "ngrokPid": 11647
+  "ngrokPid": 3335
 }
