@@ -29,7 +29,10 @@ export default class HomeScreen extends React.Component {
     }
     const contacts = await Contacts.getContactsAsync({
     });
-    console.log(contacts.data[13]);
+
+    const contactName = contacts.data.map(contact => console.log(contact.name));
+    const contactPhoneNumber = contacts.data.map(contact => contact.phoneNumbers
+      .map(contact => console.log(contact.number)));
   }
 
   render() {
