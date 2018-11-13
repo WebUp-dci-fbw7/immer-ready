@@ -9,6 +9,8 @@ import {
   View
 } from "react-native";
 import { WebBrowser } from "expo";
+import { Button } from 'react-native-elements';
+import { Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
 
@@ -16,6 +18,19 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
+
+  async showFirstContactAsync() {
+    // Ask for permission to query contacts.
+    const permission = await Permissions.askAsync(Permissions.CONTACTS);
+
+    if (permission.status !== 'granted') {
+      // Permission was denied...
+      return;
+    }
+    const contacts = await Contacts.getContactsAsync({
+    });
+    console.log(contacts.data[13]);
+  }
 
   render() {
     return (
@@ -49,7 +64,7 @@ export default class HomeScreen extends React.Component {
             </View>
 
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              Hello Majed!
             </Text>
           </View>
 
@@ -68,10 +83,8 @@ export default class HomeScreen extends React.Component {
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>Hello just test the changes</Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
-            <MonoText style={styles.codeHighlightText}>Ufff</MonoText>
+          <View style={{flex: 1, paddingTop: 40}}>
+                  <Button title='Get contacts' onPress={this.showFirstContactAsync} />
           </View>
         </View>
       </View>
