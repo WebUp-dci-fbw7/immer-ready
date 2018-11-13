@@ -60,6 +60,7 @@ export default class HomeScreen extends React.Component {
       text = this.state.errorMessage;
     } else if (this.state.location) {
       text = JSON.stringify(this.state.location);
+      console.log(text);
     }
 
     return (
