@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   developmentModeText: {
-    marginBottom: 20,
+
     color: "rgba(0,0,0,0.4)",
     fontSize: 14,
     lineHeight: 19,
@@ -128,16 +128,10 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 20
+
+
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: "contain",
-    marginTop: 3,
-    marginLeft: -10
-  },
+
   getStartedContainer: {
     alignItems: "center",
     marginHorizontal: 50
@@ -169,7 +163,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   helpContainer: {
-    marginTop: 15,
+  
     alignItems: "center"
   },
   helpLink: {
