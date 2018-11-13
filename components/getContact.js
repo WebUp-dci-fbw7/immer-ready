@@ -14,7 +14,7 @@ export default class GetContact extends Component{
       <TextInput
                style={{marginLeft: 93, marginBottom:0}}
                placeholder="Type here to translate!"
-               readOnly
+               editable={{false}}
              />
 
 
