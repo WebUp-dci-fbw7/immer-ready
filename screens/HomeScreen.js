@@ -6,10 +6,12 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  TextInput
 } from "react-native";
 import { WebBrowser } from "expo";
 import {Button} from 'react-native-elements';
+import { Ionicons, Octicons } from '@expo/vector-icons';
 // import { Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
@@ -18,19 +20,7 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
-  // async showFirstContactAsync() {
-  //    // Ask for permission to query contacts.
-  //    const permission = await Permissions.askAsync(Permissions.CONTACTS);
-  //
-  //    if (permission.status !== 'granted') {
-  //      // Permission was denied...
-  //      return;
-  //    }
-  //    const contacts = await Contacts.getContactsAsync({
-  //
-  //    });
-  //    console.log(contacts,'ebw')
-  //  }
+
 
   render() {
     return (
@@ -72,13 +62,19 @@ export default class HomeScreen extends React.Component {
 
 
 
-        <View style={{flex: 1, paddingTop: 40, height:100, backgroundColor:'skyblue',}}>
-       <Button title='Get myContact'  />
-     </View>
 
-    <View style={{flex: 1, paddingTop: 40, height:100, backgroundColor:'skyblue', marginTop:20}}>
-   <Button title='Get myContact'  />
- </View>
+
+
+
+
+    <Octicons name="chevron-up" size={250} color="green"  style={{marginLeft: 120}}/>
+    <TextInput
+          style={{height: 50, marginLeft:100}}
+          placeholder="Type here to translate!"
+          onChangeText={(text) => this.setState({text})}
+        />  
+
+ <Octicons name="chevron-down" size={250} color="green"   style={{marginLeft: 120}}/>
 
 
       </View>
