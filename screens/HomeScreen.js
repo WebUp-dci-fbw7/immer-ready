@@ -9,6 +9,8 @@ import {
   View
 } from "react-native";
 import { WebBrowser } from "expo";
+import {Button} from 'react-native-elements';
+// import { Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
 
@@ -16,6 +18,19 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
+  // async showFirstContactAsync() {
+  //    // Ask for permission to query contacts.
+  //    const permission = await Permissions.askAsync(Permissions.CONTACTS);
+  //
+  //    if (permission.status !== 'granted') {
+  //      // Permission was denied...
+  //      return;
+  //    }
+  //    const contacts = await Contacts.getContactsAsync({
+  //
+  //    });
+  //    console.log(contacts,'ebw')
+  //  }
 
   render() {
     return (
@@ -25,32 +40,23 @@ export default class HomeScreen extends React.Component {
           contentContainerStyle={styles.contentContainer}
         >
           <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require("../assets/images/robot-dev.png")
-                  : require("../assets/images/robot-prod.png")
-              }
-              style={styles.welcomeImage}
-            />
+
           </View>
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
+
 
             <View
               style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
             >
               <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
+
               </MonoText>
             </View>
 
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
+
           </View>
 
           <View style={styles.helpContainer}>
@@ -58,22 +64,23 @@ export default class HomeScreen extends React.Component {
               onPress={this._handleHelpPress}
               style={styles.helpLink}
             >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
+
+
             </TouchableOpacity>
           </View>
         </ScrollView>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Hello just test the changes</Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
-            <MonoText style={styles.codeHighlightText}>Ufff</MonoText>
-          </View>
-        </View>
+
+        <View style={{flex: 1, paddingTop: 40, height:100, backgroundColor:'skyblue',}}>
+       <Button title='Get myContact'  />
+     </View>
+
+    <View style={{flex: 1, paddingTop: 40, height:100, backgroundColor:'skyblue', marginTop:20}}>
+   <Button title='Get myContact'  />
+ </View>
+
+
       </View>
     );
   }
@@ -82,14 +89,13 @@ export default class HomeScreen extends React.Component {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
+
         </Text>
       );
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use
-          useful development tools. {learnMoreButton}
+
         </Text>
       );
     } else {
@@ -162,26 +168,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: "center"
   },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
+
   tabBarInfoText: {
     fontSize: 17,
     color: "rgba(96,100,109, 1)",
