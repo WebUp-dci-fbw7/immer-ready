@@ -9,6 +9,7 @@ import {Button } from 'react-native-elements';
 import {WebBrowser} from "expo";
 import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
 
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -23,7 +24,7 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'powderblue',
             justifyContent: 'center'
           }}>
-            <Ionicons 
+            <Ionicons
               name='md-contacts'
               size={85}
               onPress={()=> {
@@ -36,7 +37,7 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'skyblue',
             justifyContent: 'center'
           }}>
-            <Entypo 
+            <Entypo
               name='location'
               size={85}
               onPress={()=> {
@@ -44,13 +45,13 @@ export default class HomeScreen extends React.Component {
               }}
               />
           </View>
-          
+
           <View style={{
             height: 100,
             backgroundColor:'steelblue',
             justifyContent: 'center'
           }}>
-            <Feather 
+            <Feather
               name='phone-call'
               size= {85}
 
@@ -59,6 +60,7 @@ export default class HomeScreen extends React.Component {
               }}
               />
           </View>
+
         </ScrollView>
       </View>);
   }
@@ -78,8 +80,7 @@ const styles = StyleSheet.create({
     paddingTop:24,
     backgroundColor: '#ff2',
     alignItems :'stretch',
-    
+
     justifyContent: 'center'
   },
 });
-
