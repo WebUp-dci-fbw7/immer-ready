@@ -23,12 +23,12 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
-        <ScrollView>
+      <View style={styles.container}>
+
 
 
         <GetContact />
-        </ScrollView>
+
 
       </View>
     );
@@ -47,3 +47,12 @@ export default class HomeScreen extends React.Component {
     );
   };
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   width: '100%',
+   justifyContent: 'center',
+   alignItems: 'stretch'
+  },
+});
