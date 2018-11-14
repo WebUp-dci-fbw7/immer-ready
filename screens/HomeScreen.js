@@ -5,8 +5,9 @@ import {
   Alert,
   StyleSheet
 } from "react-native";
-import {Button} from 'react-native-elements';
+import {Button } from 'react-native-elements';
 import {WebBrowser} from "expo";
+import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -22,8 +23,9 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'powderblue',
             justifyContent: 'center'
           }}>
-            <Button 
-              title='Get contacts'
+            <Ionicons 
+              name='md-contacts'
+              size={85}
               onPress={()=> {
                 Alert.alert('you pressed to get contacts')
               }}
@@ -34,8 +36,9 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'skyblue',
             justifyContent: 'center'
           }}>
-            <Button 
-              title='Send Location'
+            <Entypo 
+              name='location'
+              size={85}
               onPress={()=> {
                 Alert.alert('Send Location!')
               }}
@@ -47,8 +50,10 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'steelblue',
             justifyContent: 'center'
           }}>
-            <Button 
-              title='Call Contact'
+            <Feather 
+              name='phone-call'
+              size= {85}
+
               onPress={()=> {
                 Alert.alert('Call Contact!')
               }}
