@@ -2,7 +2,8 @@ import React from "react";
 import {
   ScrollView,
   View,
-  Alert
+  Alert,
+  StyleSheet
 } from "react-native";
 import {Button} from 'react-native-elements';
 import {WebBrowser} from "expo";
@@ -14,9 +15,13 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ScrollView>
-          <View>
+          <View style={{
+            height: 100,
+            backgroundColor:'powderblue',
+            justifyContent: 'center'
+          }}>
             <Button 
               title='Get contacts'
               onPress={()=> {
@@ -24,7 +29,11 @@ export default class HomeScreen extends React.Component {
               }}
               />
           </View>
-          <View>
+          <View style={{
+            height: 100,
+            backgroundColor:'skyblue',
+            justifyContent: 'center'
+          }}>
             <Button 
               title='Send Location'
               onPress={()=> {
@@ -33,7 +42,11 @@ export default class HomeScreen extends React.Component {
               />
           </View>
           
-          <View>
+          <View style={{
+            height: 100,
+            backgroundColor:'steelblue',
+            justifyContent: 'center'
+          }}>
             <Button 
               title='Call Contact'
               onPress={()=> {
@@ -53,4 +66,15 @@ export default class HomeScreen extends React.Component {
     WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes");
   };
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    paddingTop:24,
+    backgroundColor: '#ff2',
+    alignItems :'stretch',
+    
+    justifyContent: 'center'
+  },
+});
 
