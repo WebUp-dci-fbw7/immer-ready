@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import   {View,TextInput, Text} from "react-native";
 import { Ionicons, Octicons,AntDesign, FontAwesome } from '@expo/vector-icons';
 
