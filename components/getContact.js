@@ -9,18 +9,18 @@ export default class GetContact extends Component{
     return (
           <View>
       <View>
-      <FontAwesome name="caret-up" size={300}  style={{marginLeft: 94, marginBottom:0}}/>
+      <FontAwesome name="caret-up" size={350}  style={{marginLeft: 80, marginBottom:0}}/>
       </View>
 
       <TextInput
-               style={{marginLeft: 100, marginBottom:0}}
+               style={{marginLeft: 110, marginBottom:0}}
                placeholder="Immer Ready!"
 
              />
 
 
   <View>
-   <FontAwesome name="caret-down" size={300}    style={{marginLeft: 94, marginTop:0}}/>
+   <FontAwesome name="caret-down" size={350}    style={{marginLeft: 80, marginTop:0}}/>
 </View>
   </View>
     )
