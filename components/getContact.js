@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import   {View,TextInput, Text} from "react-native";
 import { Ionicons, Octicons,AntDesign, FontAwesome } from '@expo/vector-icons';
 
@@ -7,20 +7,20 @@ export default class GetContact extends Component{
   render(){
 
     return (
-          <View>
+          <View style={{marginLeft:'23%'}}>
       <View>
-      <FontAwesome name="caret-up" size={350}  style={{marginLeft: 80, marginBottom:0}}/>
+      <FontAwesome name="caret-up" size={350}/>
       </View>
-
+<View style={{marginLeft:'15%'}}>
       <TextInput
-               style={{marginLeft: 125, marginBottom:0}}
+
                placeholder="Immer Ready!"
 
              />
-
+</View>
 
   <View>
-   <FontAwesome name="caret-down" size={350}    style={{marginLeft: 80, marginTop:0}}/>
+   <FontAwesome name="caret-down" size={350}/>
 </View>
   </View>
     )
