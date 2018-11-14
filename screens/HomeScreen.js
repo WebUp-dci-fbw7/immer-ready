@@ -15,11 +15,15 @@ import { Permissions, Contacts } from 'expo';
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
+  state = {
+    contacts: []
+  }
+
   static navigationOptions = {
     header: null
   };
 
-  async showFirstContactAsync() {
+  showFirstContactAsync = async () => {
     // Ask for permission to query contacts.
     const permission = await Permissions.askAsync(Permissions.CONTACTS);
 
@@ -30,9 +34,13 @@ export default class HomeScreen extends React.Component {
     const contacts = await Contacts.getContactsAsync({
     });
 
-    const contactName = contacts.data.map(contact => console.log(contact.name));
-    const contactPhoneNumber = contacts.data.map(contact => contact.phoneNumbers
-      .map(contact => console.log(contact.number)));
+    const filteredContacts = contacts.data.filter(contact => contact.phoneNumbers);
+
+    const contactName = filteredContacts.map(contact => contact.name + ' ' + contact.phoneNumbers[0].number);
+
+    console.log(contactName);
+
+    this.setState({contacts: contactName})
   }
 
   render() {
@@ -56,38 +64,24 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
 
             <View
               style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
             >
               <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
+                First Working Version
               </MonoText>
             </View>
-
-            <Text style={styles.getStartedText}>
-              Hello Majed!
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}
-            >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Hello just test the changes</Text>
-
           <View style={{flex: 1, paddingTop: 40}}>
                   <Button title='Get contacts' onPress={this.showFirstContactAsync} />
+
+                  {this.state.contacts.map((contact, idx) => {
+                    return <Text key={idx}>{contact}</Text>
+                  })}
           </View>
         </View>
       </View>

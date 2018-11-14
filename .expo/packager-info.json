@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 2011,
+  "packagerPort": 19003,
+  "packagerPid": 4959,
   "expoServerNgrokUrl": "https://jm-rvr.anonymous.immer-ready.exp.direct",
   "packagerNgrokUrl": "https://packager.jm-rvr.anonymous.immer-ready.exp.direct",
-  "ngrokPid": 2040
+  "ngrokPid": 4986
 }
