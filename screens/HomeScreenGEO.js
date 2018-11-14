@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Image,
   Platform,
   ScrollView,
@@ -9,38 +8,66 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-  import { SMS, WebBrowser } from "expo";
-  // import { Button } from 'react-native-elements';
-import { Constants, Permissions, Contact } from 'expo';
-import SendSMS from 'react-native-sms';
-
+import { WebBrowser } from "expo";
+import { Button } from 'react-native-elements';
+import { Constants, Location, Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
 
+  state = {
+  location: null,
+  errorMessage: null,
+  };
+
   static navigationOptions = {
     header: null
   };
 
-  async alowSMS() {
-    const permission = await Permissions.askAsync(Permissions.CONTACTS, Permissions.SMS);
+  async showFirstContactAsync() {
+    // Ask for permission to query contacts.
+    const permission = await Permissions.askAsync(Permissions.CONTACTS);
 
     if (permission.status !== 'granted') {
       // Permission was denied...
       return;
     }
-    const { result } = await Expo.SMS.sendSMSAsync('+4915163180836', 'My sample HelloWorld message');
+    const contacts = await Contacts.getContactsAsync({
+    });
+
+    // const contactName = contacts.data.map(contact => console.log(contact.name));
+    // const contactPhoneNumber = contacts.data.map(contact => contact.phoneNumbers
+    //   .map(contact => console.log(contact.number)));
   }
 
+  _getLocationAsync = async () => {
+  let { status } = await Permissions.askAsync(Permissions.LOCATION);
+  if (status !== 'granted') {
+    this.setState({
+      errorMessage: 'Permission to access location was denied',
+    });
+  }
+
+  let location = await Location.getCurrentPositionAsync({});
+  this.setState({ location });
+  };
 
   render() {
 
+    let text = 'Waiting..';
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+    } else if (this.state.location) {
+      text = JSON.stringify(this.state.location);
+      console.log(text);
+    }
+
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>Test</Text>
+        <Text style={styles.paragraph}>{text}</Text>
         <View>
-          <Button title='Send SMS' onPress={this.alowSMS} />
+          <Button title='Get location' onPress={this._getLocationAsync} />
         </View>
       </View>
     );
