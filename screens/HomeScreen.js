@@ -3,67 +3,42 @@ import {
   ScrollView,
   View,
   Alert,
-  StyleSheet
+  Navigator
 } from "react-native";
-import {Button } from 'react-native-elements';
-import {WebBrowser} from "expo";
-import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
 
+import {WebBrowser} from "expo";
+
+import GetContact from './getContact';
+import Main from './Main';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
 
+
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          <View style={{
-            height: 100,
-            backgroundColor:'powderblue',
-            justifyContent: 'center'
-          }}>
-            <Ionicons
-              name='md-contacts'
-              size={85}
-              onPress={()=> {
-                Alert.alert('you pressed to get contacts')
-              }}
-              />
-          </View>
-          <View style={{
-            height: 100,
-            backgroundColor:'skyblue',
-            justifyContent: 'center'
-          }}>
-            <Entypo
-              name='location'
-              size={85}
-              onPress={()=> {
-                Alert.alert('Send Location!')
-              }}
-              />
-          </View>
-
-          <View style={{
-            height: 100,
-            backgroundColor:'steelblue',
-            justifyContent: 'center'
-          }}>
-            <Feather
-              name='phone-call'
-              size= {85}
-
-              onPress={()=> {
-                Alert.alert('Call Contact!')
-              }}
-              />
-          </View>
-
-        </ScrollView>
-      </View>);
+      <Navigator
+      initialRoute={{
+        id:'Main'
+      }}
+      renderScene={
+        this.navigatorRenderScene
+      }
+      />
+    );
   }
+
+navigatorRenderScene(route, navigator){
+  _navigator = navigator;
+  switch (route.id){
+    case 'Main':
+    return(<Main navigator={navigator} title='Main' />);
+    case 'GetContact':
+    return(<GetContact navigator={navigator} title='GetContact' />);
+  }
+}
 
   _handleLearnMorePress = () => {
     WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/development-mode");
@@ -73,14 +48,3 @@ export default class HomeScreen extends React.Component {
     WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes");
   };
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    paddingTop:24,
-    backgroundColor: '#ff2',
-    alignItems :'stretch',
-
-    justifyContent: 'center'
-  },
-});
