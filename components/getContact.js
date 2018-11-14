@@ -13,7 +13,7 @@ export default class GetContact extends Component{
       </View>
 
       <TextInput
-               style={{marginLeft: 110, marginBottom:0}}
+               style={{marginLeft: 125, marginBottom:0}}
                placeholder="Immer Ready!"
 
              />
