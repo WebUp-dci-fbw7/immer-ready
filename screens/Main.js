@@ -9,7 +9,9 @@ import {Button } from 'react-native-elements';
 import {WebBrowser} from "expo";
 import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
 
-export default class HomeScreen extends React.Component {
+
+
+export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -65,5 +67,20 @@ onButtonPrees(){
           </View>
 
         </ScrollView>
-      </View>);
+      </View>
+    );
   }
+}
+
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    paddingTop:24,
+    backgroundColor: '#ff2',
+    alignItems :'stretch',
+
+    justifyContent: 'center'
+  },
+});
