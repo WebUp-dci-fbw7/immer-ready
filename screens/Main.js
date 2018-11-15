@@ -3,26 +3,25 @@ import {
   ScrollView,
   View,
   Alert,
-  StyleSheet
+  StyleSheet,
+  Text,
+
 } from "react-native";
 import {Button } from 'react-native-elements';
 import {WebBrowser} from "expo";
 import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
-
-
+import GetContact from './getContact';
+import {createStackNavigator} from 'react-navigation';
 
 export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
 
-onButtonPrees(){
-  this.props.navigator.push({
-    id:'CetContact'
-  })
-}
+
 
   render() {
+      const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -34,7 +33,9 @@ onButtonPrees(){
             <Ionicons
               name='md-contacts'
               size={85}
-              onPress={this.onButtonPrees.bind(this)}
+              onPress={() => {
+
+                navigate('Secound')}}
               />
           </View>
           <View style={{
@@ -78,7 +79,6 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     paddingTop:24,
-    backgroundColor: '#ff2',
     alignItems :'stretch',
 
     justifyContent: 'center'
