@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import   {View,TextInput, Text} from "react-native";
+import   {View,TextInput, Text, StyleSheet} from "react-native";
 import { Ionicons, Octicons,AntDesign, FontAwesome } from '@expo/vector-icons';
 
 export default class GetContact extends Component{
 
 render(){
   return(
-    <View style={{marginLeft:'23%'}}>
+    <View style={styles.container}>
         <View>
         <FontAwesome name="caret-up" size={350}/>
         </View>
@@ -27,3 +27,14 @@ render(){
 
 
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    paddingTop:24,
+    alignItems :'stretch',
+
+    justifyContent: 'center'
+  },
+});
