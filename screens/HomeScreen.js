@@ -3,18 +3,25 @@ import {
   ScrollView,
   View,
   Alert,
-  StyleSheet
+  StyleSheet,
+  Text,
+
 } from "react-native";
 import {Button } from 'react-native-elements';
 import {WebBrowser} from "expo";
 import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
+import GetContact from './getContact';
+import {createStackNavigator} from 'react-navigation';
 
-export default class HomeScreen extends React.Component {
+export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
 
+
+
   render() {
+      const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -23,12 +30,12 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'powderblue',
             justifyContent: 'center'
           }}>
-            <Ionicons 
+            <Ionicons
               name='md-contacts'
               size={85}
-              onPress={()=> {
-                Alert.alert('you pressed to get contacts')
-              }}
+              onPress={() => {
+
+                navigate('Secound')}}
               />
           </View>
           <View style={{
@@ -36,7 +43,7 @@ export default class HomeScreen extends React.Component {
             backgroundColor:'skyblue',
             justifyContent: 'center'
           }}>
-            <Entypo 
+            <Entypo
               name='location'
               size={85}
               onPress={()=> {
@@ -44,13 +51,13 @@ export default class HomeScreen extends React.Component {
               }}
               />
           </View>
-          
+
           <View style={{
             height: 100,
             backgroundColor:'steelblue',
             justifyContent: 'center'
           }}>
-            <Feather 
+            <Feather
               name='phone-call'
               size= {85}
 
@@ -59,27 +66,22 @@ export default class HomeScreen extends React.Component {
               }}
               />
           </View>
+    
+
         </ScrollView>
-      </View>);
+      </View>
+    );
   }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/development-mode");
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes");
-  };
 }
+
+
 
 const styles = StyleSheet.create({
   container:{
     flex: 1,
     paddingTop:24,
-    backgroundColor: '#ff2',
     alignItems :'stretch',
-    
+
     justifyContent: 'center'
   },
 });
-
