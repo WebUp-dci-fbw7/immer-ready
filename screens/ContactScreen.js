@@ -7,8 +7,8 @@ export default class GetContact extends Component {
     contacts: []
   };
 
-  componentDidMount() {
-    const contacts = showContact()
+  async componentDidMount() {
+    const contacts = await showContact()
       .then(contact => {
         this.setState({
           contacts: contact
@@ -25,7 +25,7 @@ export default class GetContact extends Component {
           <FontAwesome name="caret-up" size={350} />
         </View>
         <View style={{ marginLeft: "15%" }}>
-          <TextInput>{this.state.contacts}</TextInput>
+          <TextInput>Hello wrlod </TextInput>
         </View>
 
         <View>
