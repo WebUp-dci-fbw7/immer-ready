@@ -9,15 +9,16 @@ import {
   View
 } from "react-native";
 import { WebBrowser } from "expo";
-import { Button } from 'react-native-elements';
-import { Permissions, Contacts } from 'expo';
+import { Button } from "react-native-elements";
+import { Permissions, Contacts } from "expo";
 
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   state = {
-    contacts: []
-  }
+    contacts: [],
+    index: 0
+  };
 
   static navigationOptions = {
     header: null
@@ -27,21 +28,28 @@ export default class HomeScreen extends React.Component {
     // Ask for permission to query contacts.
     const permission = await Permissions.askAsync(Permissions.CONTACTS);
 
-    if (permission.status !== 'granted') {
+    if (permission.status !== "granted") {
       // Permission was denied...
       return;
     }
-    const contacts = await Contacts.getContactsAsync({
+    const contacts = await Contacts.getContactsAsync({});
+
+    const filteredContacts = contacts.data.filter(
+      contact => contact.phoneNumbers
+    );
+
+    // console.log(filteredContacts);
+
+    const contactName = filteredContacts.map(
+      contact => contact.name + " " + contact.phoneNumbers[0].number
+    );
+
+    // console.log(contactName);
+
+    this.setState({
+      contacts: contactName
     });
-
-    const filteredContacts = contacts.data.filter(contact => contact.phoneNumbers);
-
-    const contactName = filteredContacts.map(contact => contact.name + ' ' + contact.phoneNumbers[0].number);
-
-    console.log(contactName);
-
-    this.setState({contacts: contactName})
-  }
+  };
 
   render() {
     return (
@@ -60,55 +68,16 @@ export default class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-            >
-              <MonoText style={styles.codeHighlightText}>
-                First Working Version
-              </MonoText>
-            </View>
-          </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-          <View style={{flex: 1, paddingTop: 40}}>
-                  <Button title='Get contacts' onPress={this.showFirstContactAsync} />
-
-                  {this.state.contacts.map((contact, idx) => {
-                    return <Text key={idx}>{contact}</Text>
-                  })}
+          <View style={{ flex: 1, paddingTop: 40 }}>
+            <Button title="Get contacts" onPress={this.showFirstContactAsync} />
+            <Text>{this.state.contacts[this.state.index + 10]}</Text>
           </View>
         </View>
       </View>
     );
-  }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use
-          useful development tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
   }
 
   _handleLearnMorePress = () => {
