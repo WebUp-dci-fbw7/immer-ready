@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Image,
   Platform,
   ScrollView,
@@ -9,38 +8,68 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-  import { SMS, WebBrowser } from "expo";
-  // import { Button } from 'react-native-elements';
-import { Constants, Permissions, Contact } from 'expo';
-import SendSMS from 'react-native-sms';
-
+import { WebBrowser } from "expo";
+import { Button } from 'react-native-elements';
+import { Constants, Location, Permissions, Contacts } from 'expo';
 
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
 
+  state = {
+    latitude: null,
+    longitude: null,
+    errorMessage: null,
+  };
+
   static navigationOptions = {
     header: null
   };
 
-  async alowSMS() {
-    const permission = await Permissions.askAsync(Permissions.CONTACTS, Permissions.SMS);
-
-    if (permission.status !== 'granted') {
-      // Permission was denied...
-      return;
-    }
-    const { result } = await Expo.SMS.sendSMSAsync('+4915163180836', 'My sample HelloWorld message');
+  _getLocationAsync = async () => {
+  let { status } = await Permissions.askAsync(Permissions.LOCATION);
+  if (status !== 'granted') {
+    this.setState({
+      errorMessage: 'Permission to access location was denied',
+    });
   }
+
+  let location = await Location.getCurrentPositionAsync({});
+  this.setState({ latitude: location.coords.latitude,
+                  longitude: location.coords.longitude });
+  };
 
 
   render() {
 
+    let latitude = '';
+    let longitude = '';
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+
+    } else if (this.state.latitude && this.state.longitude) {
+      latitude = JSON.stringify(this.state.latitude);
+      longitude = JSON.stringify(this.state.longitude);
+      // console.log(text);
+    }
+
+    async function alowSMS() {
+
+      const permission = await Permissions.askAsync(Permissions.CONTACTS, Permissions.SMS);
+
+      if (permission.status !== 'granted') {
+        // Permission was denied...
+        return;
+      }
+      const { result } = await Expo.SMS.sendSMSAsync('+4915163180836', `https://www.google.com/maps/@${latitude},${longitude},17z`);
+    }
+
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>Test</Text>
+        <Text style={styles.paragraph}>https://www.google.com/maps/@{latitude},{longitude},17z</Text>
         <View>
-          <Button title='Send SMS' onPress={this.alowSMS} />
+          <Button title='Get location' onPress={this._getLocationAsync} />
+          <Button title='Send SMS' onPress={alowSMS} />
         </View>
       </View>
     );
