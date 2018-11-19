@@ -14,9 +14,16 @@ showContact = async () => {
     contact => contact.phoneNumbers
   );
 
+
   const contactName = filteredContacts.map(
-    contact => contact.name + " " + contact.phoneNumbers[0].number
+    contact => ({
+      name: contact.name ,
+      number: contact.phoneNumbers[0].number
+    })
   );
+
+return contactName
+
 };
 
-module.exports = showContact;
+export default showContact;

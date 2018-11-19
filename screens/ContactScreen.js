@@ -4,20 +4,17 @@ import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
-    contacts: []
+    contact: []
   };
 
   async componentDidMount() {
     const contacts = await showContact()
-      .then(contact => {
-        this.setState({
-          contacts: contact
-        });
+      this.setState({
+        contact : contacts
+
       })
-      .then(console.log)
-      .catch(e => console.error(e));
-    console.log(contacts);
-  }
+
+    }
   render() {
     return (
       <View style={styles.container}>
@@ -25,9 +22,12 @@ export default class GetContact extends Component {
           <FontAwesome name="caret-up" size={350} />
         </View>
         <View style={{ marginLeft: "15%" }}>
-          <TextInput>Hello wrlod </TextInput>
-        </View>
+          {this.state.contact.map(item=>{
+          return  <TextInput key={item}>{item.name}</TextInput>
 
+          })}
+
+        </View>
         <View>
           <FontAwesome name="caret-down" size={350} />
         </View>
