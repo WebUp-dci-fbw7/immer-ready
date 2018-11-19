@@ -5,27 +5,27 @@ import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
     contact: [],
-    index:0
+    index: 0
   };
 
-  async componentDidMount() {
-    const contacts = await showContact()
+  componentDidMount() {
+    showContact().then(contact => {
+      console.log("befor");
       this.setState({
-        contact : contacts
-
-      })
-
-    }
+        contact
+      });
+      console.log("affter");
+    });
+  }
   render() {
+    console.log(this.state.contact);
     return (
       <View style={styles.container}>
         <View>
           <FontAwesome name="caret-up" size={350} />
         </View>
         <View style={{ marginLeft: "15%" }}>
-        <Text>
-          {this.state.contact[this.state.index + 1 ]}
-</Text>
+          <Text>{this.state.contact[this.state.index + 1]}</Text>
         </View>
         <View>
           <FontAwesome name="caret-down" size={350} />
