@@ -1,34 +1,63 @@
 import React, { Component } from "react";
-import { View, TextInput, Text, StyleSheet } from "react-native";
+import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
-    contact: [],
-    index: 0
+    contacts: [],
+    index: 0,
+    loading: true
   };
 
   componentDidMount() {
     showContact().then(contact => {
       console.log("befor");
       this.setState({
-        contact
+        contacts: contact,
+        loading: false
       });
-      console.log("affter");
     });
   }
+  keyUp = () => {
+    if (this.state.index === 0) {
+      return;
+    } else {
+      this.setState({
+        index: this.state.index - 1
+      });
+    }
+  };
+
+  keyDown = () => {
+    if (this.state.index >= this.state.contacts.length - 1) {
+      return Alert.alert("Sorry dude No more contacts!");
+    } else {
+      this.setState({
+        index: this.state.index + 1
+      });
+    }
+  };
+
   render() {
-    console.log(this.state.contact);
     return (
       <View style={styles.container}>
         <View>
-          <FontAwesome name="caret-up" size={350} />
+          <FontAwesome name="caret-up" size={350} onPress={this.keyUp} />
         </View>
         <View style={{ marginLeft: "15%" }}>
-          <Text>{this.state.contact[this.state.index + 1]}</Text>
+          <Text>
+            {this.state.loading
+              ? "loading...."
+              : this.state.contacts[this.state.index].name}
+          </Text>
+          <Text>
+            {this.state.loading
+              ? "loading...."
+              : this.state.contacts[this.state.index].number}
+          </Text>
         </View>
         <View>
-          <FontAwesome name="caret-down" size={350} />
+          <FontAwesome name="caret-down" size={350} onPress={this.keyDown} />
         </View>
       </View>
     );
