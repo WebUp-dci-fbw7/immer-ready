@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
+import { Badge } from "react-native-elements";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
+import { createStackNavigator } from "react-navigation";
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
@@ -11,7 +13,6 @@ export default class GetContact extends Component {
 
   componentDidMount() {
     showContact().then(contact => {
-      console.log("befor");
       this.setState({
         contacts: contact,
         loading: false
@@ -39,12 +40,22 @@ export default class GetContact extends Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <View>
           <FontAwesome name="caret-up" size={350} onPress={this.keyUp} />
         </View>
-        <View style={{ marginLeft: "15%" }}>
+
+        <Badge
+          containerStyle={{ backgroundColor: "green" }}
+          onPress={() => {
+            navigate("Home", {
+              contacts: this.state.contacts[this.state.index]
+            });
+          }}
+        >
           <Text>
             {this.state.loading
               ? "loading...."
@@ -55,7 +66,8 @@ export default class GetContact extends Component {
               ? "loading...."
               : this.state.contacts[this.state.index].number}
           </Text>
-        </View>
+        </Badge>
+
         <View>
           <FontAwesome name="caret-down" size={350} onPress={this.keyDown} />
         </View>

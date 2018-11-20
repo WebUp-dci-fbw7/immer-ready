@@ -6,14 +6,32 @@ import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
 /// Import the  Screen
 import GetContact from "./ContactScreen";
+import getGeolocation from "../Controlers/getGeoLocation";
 
 export default class Main extends React.Component {
+  state = {
+    contacts: []
+  };
   static navigationOptions = {
     header: null
   };
 
+  componentDidUpdate() {
+    if (!this.props.navigation.state.params.contacts) {
+      return;
+    }
+    console.log(this.props.navigation.state.params.contacts.number);
+  }
+
   render() {
     const { navigate } = this.props.navigation;
+    let text = "";
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+    } else if (this.state.location) {
+      text = JSON.stringify(this.state.location);
+    }
+
     return (
       <View style={styles.container}>
         <ScrollView>
