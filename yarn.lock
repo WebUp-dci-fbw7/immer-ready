@@ -5826,7 +5826,7 @@ react-native-drawer@2.5.0:
     prop-types "^15.5.8"
     tween-functions "^1.0.1"
 
-react-native-easy-grid@0.2.0:
+react-native-easy-grid@0.2.0, react-native-easy-grid@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-native-easy-grid/-/react-native-easy-grid-0.2.0.tgz#4718031aa1baaa2613b829fc807da288eb0d2797"
   integrity sha512-ZTi84+nJq2wwov55s1rHez0twk/8bs/AGnA5ERF8eYsMbOhBhOzzclj+TyY+/woB/2REAd9QQmWmIT/L999n6Q==
@@ -5852,7 +5852,7 @@ react-native-gesture-handler@1.0.9:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-iphone-x-helper@^1.0.1:
+react-native-iphone-x-helper@^1.0.1, react-native-iphone-x-helper@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.0.tgz#9f8a376eb00bc712115abff4420318a0063fa796"
   integrity sha512-xIeTo4s77wwKgBZLVRIZC9tM9/PkXS46Ul76NXmvmixEb3ZwqGdQesR3zRiLMOoIdfOURB6N9bba9po7+x9Bag==
@@ -5879,6 +5879,18 @@ react-native-reanimated@1.0.0-alpha.10:
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.10.tgz#e9e6fb35a2cf52fdc912b9fbc76f34f80698e530"
   integrity sha512-dbZG/Lh5Q+6zRvS7+gIkZKmXTG7XVqHbpMROL1LApBBMQwuLq/uLtKk/nBSn1+mNmazPrPMTehI7TG3AEkctww==
 
+react-native-responsive-dimensions@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-2.0.1.tgz#64e2064d7e9a2506f10ab7fa7422e8aa64c41d6b"
+  integrity sha512-fVSJEfwR353IvNSLtwwv7asAU4BAqd/wXQWeiyKyasn5pqpn/X0w0u7Tc0QWwsQch8lywz3npMjMThXgXkptuQ==
+
+react-native-responsive-fontsize@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-fontsize/-/react-native-responsive-fontsize-0.1.2.tgz#eda8ed31d62410ed0f11a89fed977650870dc174"
+  integrity sha1-7ajtMdYkEO0PEaif7Zd2UIcNwXQ=
+  dependencies:
+    react-native-iphone-x-helper "^1.0.2"
+
 react-native-safe-area-view@0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.11.0.tgz#4f3dda43c2bace37965e7c6aef5fc83d4f19d174"
@@ -5902,6 +5914,13 @@ react-native-screens@^1.0.0-alpha.11:
   version "1.0.0-alpha.16"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.16.tgz#e3651b7077ea8fa04e8dd3265ad9b87f1f77a758"
   integrity sha512-t+/aq5jQa+Is6afiQHa1P+2UPnwPGY9NT0pSqNr2zQ5llCn8TcPq6GN8xDMuEc08g+y/9R5zWo32hlVStwWn1A==
+
+react-native-square-grid@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-square-grid/-/react-native-square-grid-1.0.5.tgz#284e1eff16716dcf0eb9399495cdb5324b5c2d0e"
+  integrity sha512-vlPZFUWfSfgkWiXSfXlcNJZo0eBgSDb9HSGbYHI26xhrhZshr+PdlZEmWhllA7nF+5RgpY/FWwrZE6KatLo2IA==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-svg@8.0.8:
   version "8.0.8"
