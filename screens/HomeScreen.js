@@ -1,13 +1,10 @@
 import React from "react";
-import {
-  ScrollView,
-  View,
-  Alert,
-  StyleSheet
-} from "react-native";
-import {Button } from 'react-native-elements';
+import {ScrollView, View, Alert, StyleSheet} from "react-native";
+import {Button} from 'react-native-elements';
 import {WebBrowser} from "expo";
 import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
+import {responsiveHeight, responsiveWidth, responsiveFontSize} from 'react-native-responsive-dimensions';
+import RF from 'react-native-responsive-fontsize';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
