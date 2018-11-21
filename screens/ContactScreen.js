@@ -42,11 +42,12 @@ export default class GetContact extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.topBottom}>
           <FontAwesome 
             name="caret-up"
             onPress={this.keyUp}
-            style={styles.button} />
+            style={styles.upIcon} 
+            />
         </View>
         <Badge containerStyle={{ 
           alignItems: 'center',
@@ -65,11 +66,11 @@ export default class GetContact extends Component {
               : this.state.contacts[this.state.index].number}
           </Text>
         </Badge>
-        <View>
+        <View style={styles.topBottom}>
           <FontAwesome 
             name="caret-down" 
-            onPress={this.keyDown} 
-            style={styles.button}/>
+            onPress={this.keyDown}
+            style={styles.downIcon}/>
         </View>
       </View>
     );
@@ -77,17 +78,19 @@ export default class GetContact extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 24,
-    paddingBottom: 35,
-    alignItems: "stretch",
-
-    justifyContent: "center"
+    flex: 1
   },
-  button: {
-    fontSize: 340,
-    textAlign: 'center',
-    color: '#000'
+  topBottom: {
+    height: '45%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0'
   },
-  
+  upIcon: {
+    fontSize: 350,
+    marginBottom: 35
+  },
+  downIcon: {
+    fontSize: 350
+  }
 });
