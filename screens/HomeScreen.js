@@ -24,14 +24,12 @@ export default class Main extends React.Component {
       Permissions.SMS
     );
 
-    let initialText = "Waiting for location";
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
     } else if (this.state.latitude && this.state.longitude) {
-      latitude = JSON.stringify(this.state.latitude);
-      longitude = JSON.stringify(this.state.longitude);
+      this.state.latitude = JSON.stringify(this.state.latitude);
+      this.state.longitude = JSON.stringify(this.state.longitude);
     }
-    console.log(this.state.latitude);
 
     if (permission.status !== "granted") {
       // Permission was denied...
@@ -95,6 +93,7 @@ export default class Main extends React.Component {
               size={85}
               onPress={() => {
                 Alert.alert("Call Contact!");
+                getGeolocation();
               }}
             />
           </View>

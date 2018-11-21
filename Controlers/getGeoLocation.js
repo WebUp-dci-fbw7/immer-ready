@@ -1,6 +1,6 @@
 //  get the Promissions to access the Location
 
-import { Permissions } from "expo";
+import { Constants, Location, Permissions } from "expo";
 
 // get the User Location using Expo
 
@@ -13,15 +13,8 @@ _getLocationAsync = async () => {
   }
 
   let location = await Location.getCurrentPositionAsync({});
-  this.setState({ location });
+  console.log(location);
+  return location;
 };
-/// those line of code schuld be inside the render method
-// let text = "Waiting..";
-// if (this.state.errorMessage) {
-//   text = this.state.errorMessage;
-// } else if (this.state.location) {
-//   text = JSON.stringify(this.state.location);
-//   return text;
-// }
 
 export default _getLocationAsync;
