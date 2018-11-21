@@ -49,12 +49,12 @@ export default class GetContact extends Component {
             style={styles.upIcon} 
             />
         </View>
+        <View style={styles.center}>
         <Badge containerStyle={{ 
           alignItems: 'center',
           alignContent: 'center',
           backgroundColor: 'green'
-    
-   }}>
+          }}>
           <Text style={{fontSize:25}}>
             {this.state.loading
               ? "loading...."
@@ -66,6 +66,7 @@ export default class GetContact extends Component {
               : this.state.contacts[this.state.index].number}
           </Text>
         </Badge>
+        </View>
         <View style={styles.topBottom}>
           <FontAwesome 
             name="caret-down" 
@@ -78,10 +79,17 @@ export default class GetContact extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+  
   },
   topBottom: {
-    height: '45%',
+    height: '40%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0'
+  },
+  center : {
+    height: '20%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f0f0f0'
