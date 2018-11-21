@@ -41,7 +41,7 @@ export default class GetContact extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-
+    console.log("contact: ", this.props.screenProps.contact);
     return (
       <View style={styles.container}>
         <View>
@@ -51,9 +51,10 @@ export default class GetContact extends Component {
         <Badge
           containerStyle={{ backgroundColor: "green" }}
           onPress={() => {
-            navigate("Home", {
-              contacts: this.state.contacts[this.state.index]
-            });
+            this.props.screenProps.passState(
+              this.state.contacts[this.state.index]
+            );
+            navigate("Home");
           }}
         >
           <Text>

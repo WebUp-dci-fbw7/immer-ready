@@ -1,36 +1,52 @@
 import React from "react";
 import { ScrollView, View, Alert, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
-import { WebBrowser } from "expo";
+import { WebBrowser, Permissions } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
-import { createStackNavigator } from "react-navigation";
+
 /// Import the  Screen
 import GetContact from "./ContactScreen";
 import getGeolocation from "../Controlers/getGeoLocation";
 
 export default class Main extends React.Component {
   state = {
-    contacts: []
+    contact: {},
+    latitude: null,
+    longitude: null
   };
   static navigationOptions = {
     header: null
   };
 
-  componentDidUpdate() {
-    if (!this.props.navigation.state.params.contacts) {
+  async alowSMS() {
+    const permission = await Permissions.askAsync(
+      Permissions.CONTACTS,
+      Permissions.SMS
+    );
+
+    let initialText = "Waiting for location";
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+    } else if (this.state.latitude && this.state.longitude) {
+      latitude = JSON.stringify(this.state.latitude);
+      longitude = JSON.stringify(this.state.longitude);
+    }
+    console.log(this.state.latitude);
+
+    if (permission.status !== "granted") {
+      // Permission was denied...
       return;
     }
-    console.log(this.props.navigation.state.params.contacts.number);
+    const number = this.props.screenProps.contact.number;
+
+    const { result } = await Expo.SMS.sendSMSAsync(
+      number,
+      `https://www.google.com/maps/@${latitude},${longitude},17z`
+    );
   }
 
   render() {
     const { navigate } = this.props.navigation;
-    let text = "";
-    if (this.state.errorMessage) {
-      text = this.state.errorMessage;
-    } else if (this.state.location) {
-      text = JSON.stringify(this.state.location);
-    }
 
     return (
       <View style={styles.container}>
@@ -62,6 +78,7 @@ export default class Main extends React.Component {
               size={85}
               onPress={() => {
                 Alert.alert("Send Location!");
+                this.alowSMS();
               }}
             />
           </View>
