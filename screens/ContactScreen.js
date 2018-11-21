@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
-import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
+import { View, Text, StyleSheet, Alert } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { Badge } from 'react-native-elements';
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
@@ -41,23 +42,36 @@ export default class GetContact extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <FontAwesome name="caret-up" size={350} onPress={this.keyUp} />
+        <View style={styles.topBottom}>
+          <FontAwesome 
+            name="caret-up"
+            onPress={this.keyUp}
+            style={styles.upIcon} 
+            />
         </View>
-        <View style={{ marginLeft: "15%" }}>
-          <Text>
+        <View style={styles.center}>
+        <Badge containerStyle={{ 
+          alignItems: 'center',
+          alignContent: 'center',
+          backgroundColor: 'green'
+          }}>
+          <Text style={{fontSize:25}}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].name}
           </Text>
-          <Text>
+          <Text style={{fontSize:25}}> 
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].number}
           </Text>
+        </Badge>
         </View>
-        <View>
-          <FontAwesome name="caret-down" size={350} onPress={this.keyDown} />
+        <View style={styles.topBottom}>
+          <FontAwesome 
+            name="caret-down" 
+            onPress={this.keyDown}
+            style={styles.downIcon}/>
         </View>
       </View>
     );
@@ -66,9 +80,25 @@ export default class GetContact extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 24,
-    alignItems: "stretch",
-
-    justifyContent: "center"
+  
+  },
+  topBottom: {
+    height: '40%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0'
+  },
+  center : {
+    height: '20%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0'
+  },
+  upIcon: {
+    fontSize: 350,
+    marginBottom: 35
+  },
+  downIcon: {
+    fontSize: 350
   }
 });
