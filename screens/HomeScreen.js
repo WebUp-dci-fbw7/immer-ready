@@ -1,69 +1,83 @@
 import React from "react";
-import {ScrollView, View, Alert, StyleSheet} from "react-native";
-import {Button} from 'react-native-elements';
-import {WebBrowser} from "expo";
-import {Ionicons, Feather, Entypo} from '@expo/vector-icons';
-import {responsiveHeight, responsiveWidth, responsiveFontSize} from 'react-native-responsive-dimensions';
-import RF from 'react-native-responsive-fontsize';
+import { ScrollView, View, Alert, StyleSheet, Text } from "react-native";
+import { Button } from "react-native-elements";
+import { WebBrowser } from "expo";
+import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
+import { createStackNavigator } from "react-navigation";
 
-export default class HomeScreen extends React.Component {
+// style installion
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize
+} from "react-native-responsive-dimensions";
+import RF from "react-native-responsive-fontsize";
+/// Import the  Screen
+import GetContact from "./ContactScreen";
+
+export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
 
   render() {
-    return (<View style={styles.container}>
+    const { navigate } = this.props.navigation;
+    return (
+      <View style={styles.container}>
+        <View style={styles.contacts}>
+          <Ionicons
+            name="md-contacts"
+            style={{
+              marginLeft: responsiveWidth(7),
+              marginBottom: responsiveHeight(35),
+              fontSize: RF(22)
+            }}
+            onPress={() => {
+              navigate("Secound");
+            }}
+          />
+        </View>
+        <View style={styles.location}>
+          <Entypo
+            style={{
+              marginLeft: responsiveWidth(7),
+              marginBottom: responsiveHeight(35),
+              fontSize: RF(19),
+              color: "blue"
+            }}
+            name="location"
+            onPress={() => {
+              Alert.alert("Send Location!");
+            }}
+          />
+        </View>
 
-      <View style={styles.contacts}>
-        <Ionicons name='md-contacts' style={{
-            marginLeft: responsiveWidth(7),
-            marginBottom: responsiveHeight(35),
-            fontSize: RF(22)
-          }} onPress={() => {
-            Alert.alert('you pressed to get contacts')
-          }}/>
-
+        <View style={styles.phone}>
+          <Feather
+            style={{
+              marginLeft: responsiveWidth(-15),
+              fontSize: RF(17),
+              color: "green",
+              position: "absolute"
+            }}
+            name="phone-call"
+            onPress={() => {
+              Alert.alert("Call Contact!");
+            }}
+          />
+        </View>
       </View>
-      <View style={styles.location}>
-        <Entypo style={{
-            marginLeft: responsiveWidth(7),
-            marginBottom: responsiveHeight(35),
-            fontSize: RF(19),
-            color: "blue"
-          }} name='location' onPress={() => {
-            Alert.alert('Send Location!')
-          }}/>
-      </View>
-      <View style={styles.phone}>
-        <Feather style={{
-            marginLeft: responsiveWidth(-15),
-            fontSize: RF(17),
-            color: "green",
-            position: 'absolute'
-          }} name='phone-call' onPress={() => {
-            Alert.alert('Call Contact!')
-          }}/>
-      </View>
-
-    </View>);
+    );
   }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/development-mode");
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync("https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes");
-  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'yellow',
-    justifyContent: 'center',
-    position: 'absolute',
+    flexDirection: "row",
+    backgroundColor: "yellow",
+    justifyContent: "center",
+    position: "absolute",
     top: 0,
     bottom: 0,
     zIndex: 10,
