@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView, View, Alert, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
-import { WebBrowser } from "expo";
+import { WebBrowser, Linking, SMS, Permissions } from "expo"; // tis was imported to test call and send message
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
 /// Import the  Screen
@@ -42,9 +42,7 @@ export default class Main extends React.Component {
             <Entypo
               name="location"
               size={85}
-              onPress={() => {
-                Alert.alert("Send Location!");
-              }}
+              onPress={this.sendMessage}
             />
           </View>
 
@@ -58,16 +56,34 @@ export default class Main extends React.Component {
             <Feather
               name="phone-call"
               size={85}
-              onPress={() => {
-                Alert.alert("Call Contact!");
-              }}
+              onPress={this.callNumber}
             />
           </View>
         </ScrollView>
       </View>
     );
   }
+  // 'this gives permissions to linking and sms' 
+askLPermissionsAsync = async ()=>{
+  await Permissions.askAsync(Permissions.Linking);
+};
+
+askSMSPermissionsAsync = async ()=> {
+  await Permissions.askAsync(Permissions.SMS);
+};
+//
+callNumber = async () => {
+  this.askLPermissionsAsync();
+  let result = await Linking.openURL('tel:017661543884');  
+};
+
+sendMessage = async ()=> {
+  this.askSMSPermissionsAsync();
+  let result = await SMS.sendSMSAsync(['017661543884'], 'Hello Bro');
+};
+
 }
+
 
 const styles = StyleSheet.create({
   container: {
