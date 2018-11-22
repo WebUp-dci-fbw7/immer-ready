@@ -3,6 +3,7 @@ import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
+import { FontAwesome } from "@expo/vector-icons";
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
@@ -41,8 +42,12 @@ export default class GetContact extends Component {
     // console.log("contact: ", this.props.screenProps.contact);
     return (
       <View style={styles.container}>
-        <View>
-          <FontAwesome name="caret-up" size={350} onPress={this.keyUp} />
+        <View style={styles.topBottom}>
+          <FontAwesome
+            name="caret-up"
+            onPress={this.keyUp}
+            style={styles.upIcon}
+          />
         </View>
 
         <Badge
@@ -61,7 +66,7 @@ export default class GetContact extends Component {
               ? "loading...."
               : this.state.contacts[this.state.index].name}
           </Text>
-          <Text>
+          <Text style={{ fontSize: 25 }}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].number}
@@ -77,10 +82,25 @@ export default class GetContact extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 24,
-    alignItems: "stretch",
-
-    justifyContent: "center"
+    flex: 1
+  },
+  topBottom: {
+    height: "40%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f0f0f0"
+  },
+  center: {
+    height: "20%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f0f0f0"
+  },
+  upIcon: {
+    fontSize: 350,
+    marginBottom: 35
+  },
+  downIcon: {
+    fontSize: 350
   }
 });
