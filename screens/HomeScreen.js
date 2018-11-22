@@ -74,12 +74,14 @@ askSMSPermissionsAsync = async ()=> {
 //
 callNumber = async () => {
   this.askLPermissionsAsync();
-  let result = await Linking.openURL('tel:017661543884');  
+  let result = await Linking.openURL('tel:015226804589');
+  return result;  
 };
 
 sendMessage = async ()=> {
   this.askSMSPermissionsAsync();
   let result = await SMS.sendSMSAsync(['017661543884'], 'Hello Bro');
+  return result;
 };
 
 }
