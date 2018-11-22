@@ -5865,7 +5865,7 @@ react-native-keyboard-aware-scroll-view@0.5.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
-"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
+react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
@@ -5902,6 +5902,11 @@ react-native-screens@^1.0.0-alpha.11:
   version "1.0.0-alpha.16"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.16.tgz#e3651b7077ea8fa04e8dd3265ad9b87f1f77a758"
   integrity sha512-t+/aq5jQa+Is6afiQHa1P+2UPnwPGY9NT0pSqNr2zQ5llCn8TcPq6GN8xDMuEc08g+y/9R5zWo32hlVStwWn1A==
+
+react-native-sms@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-sms/-/react-native-sms-1.8.0.tgz#f0cbdc36f94933f634cfbd52b8b91e86fd29a667"
+  integrity sha512-UmbDyqKegRTpML0eeHTELVl03WWrq0pRfA7WxFNUcN1MpLqrYFuD9jOizQBJm5jH1FN7caTyk6HnzhAFIbLhyw==
 
 react-native-svg@8.0.8:
   version "8.0.8"

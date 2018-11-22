@@ -2,18 +2,12 @@ import { Constants, Permissions, Contact } from "expo";
 import { SMS } from "expo";
 import SendSMS from "react-native-sms";
 
-async function alowSMS(number) {
+const allowSMS = async (number, { latitude, longitude }) => {
+  console.log("test", number, latitude, longitude);
   const permission = await Permissions.askAsync(
     Permissions.CONTACTS,
     Permissions.SMS
   );
-
-  if (this.state.errorMessage) {
-    text = this.state.errorMessage;
-  } else if (this.state.latitude && this.state.longitude) {
-    this.state.latitude = JSON.stringify(this.state.latitude);
-    this.state.longitude = JSON.stringify(this.state.longitude);
-  }
 
   if (permission.status !== "granted") {
     // Permission was denied...
@@ -24,5 +18,6 @@ async function alowSMS(number) {
     number,
     `https://www.google.com/maps/@${latitude},${longitude},17z`
   );
-}
-export default alowSMS;
+  return result;
+};
+export default allowSMS;

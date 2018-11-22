@@ -13,10 +13,7 @@ export default class GetContact extends Component {
 
   componentDidMount() {
     showContact().then(contact => {
-      this.setState({
-        contacts: contact,
-        loading: false
-      });
+      this.setState({ contacts: contact, loading: false });
     });
   }
   keyUp = () => {
@@ -41,7 +38,7 @@ export default class GetContact extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    console.log("contact: ", this.props.screenProps.contact);
+    // console.log("contact: ", this.props.screenProps.contact);
     return (
       <View style={styles.container}>
         <View>
@@ -49,7 +46,9 @@ export default class GetContact extends Component {
         </View>
 
         <Badge
-          containerStyle={{ backgroundColor: "green" }}
+          containerStyle={{
+            backgroundColor: "green"
+          }}
           onPress={() => {
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]

@@ -1,51 +1,23 @@
 import React from "react";
 import { ScrollView, View, Alert, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
-import { WebBrowser, Permissions } from "expo";
+import { WebBrowser, Permissions, Constants, Location } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
-
-/// Import the  Screen
-import GetContact from "./ContactScreen";
-import getGeolocation from "../Controlers/getGeoLocation";
+import getLocationAsync from "../Controlers/getGeoLocation";
+import allowSMS from "../Controlers/SendSMS";
 
 export default class Main extends React.Component {
   state = {
-    contact: {},
-    latitude: null,
-    longitude: null
+    contact: {}
   };
   static navigationOptions = {
     header: null
   };
 
-  async alowSMS() {
-    const permission = await Permissions.askAsync(
-      Permissions.CONTACTS,
-      Permissions.SMS
-    );
-
-    if (this.state.errorMessage) {
-      text = this.state.errorMessage;
-    } else if (this.state.latitude && this.state.longitude) {
-      this.state.latitude = JSON.stringify(this.state.latitude);
-      this.state.longitude = JSON.stringify(this.state.longitude);
-    }
-
-    if (permission.status !== "granted") {
-      // Permission was denied...
-      return;
-    }
-    const number = this.props.screenProps.contact.number;
-
-    const { result } = await Expo.SMS.sendSMSAsync(
-      number,
-      `https://www.google.com/maps/@${latitude},${longitude},17z`
-    );
-  }
-
   render() {
     const { navigate } = this.props.navigation;
-
+    // console.log(this.props.screenProps.contact.numbers);
+    // console.log(this.props.navigation.getParam);
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -74,9 +46,12 @@ export default class Main extends React.Component {
             <Entypo
               name="location"
               size={85}
-              onPress={() => {
-                Alert.alert("Send Location!");
-                this.alowSMS();
+              onPress={async () => {
+                const location = await getLocationAsync();
+                const result = await allowSMS(
+                  this.props.screenProps.contact.number,
+                  location.coords
+                );
               }}
             />
           </View>
@@ -93,7 +68,6 @@ export default class Main extends React.Component {
               size={85}
               onPress={() => {
                 Alert.alert("Call Contact!");
-                getGeolocation();
               }}
             />
           </View>
