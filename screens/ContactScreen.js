@@ -3,7 +3,7 @@ import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
-import { FontAwesome } from "@expo/vector-icons";
+
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
