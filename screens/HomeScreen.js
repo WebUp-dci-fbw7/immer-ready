@@ -83,43 +83,45 @@ const styles = StyleSheet.create({
     zIndex: 10,
     left: 0,
     right: 0
+
   },
 
   contacts: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#607d8b",
-    justifyContent: "center",
+    backgroundColor: '#607d8b',
+    justifyContent: 'center',
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
-    borderLeftColor: "white",
-    borderRightColor: "white"
+    borderLeftColor: 'white',
+    borderRightColor: 'white'
   },
 
   location: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#555",
-    justifyContent: "center",
+    backgroundColor: '#555',
+    justifyContent: 'center',
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
-    borderLeftColor: "white",
-    borderRightColor: "white"
+    borderLeftColor: 'white',
+    borderRightColor: 'white'
   },
 
   phone: {
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderLeftWidth: responsiveWidth(50),
     borderRightWidth: responsiveWidth(50),
     borderBottomWidth: responsiveWidth(80),
-    borderBottomColor: "#bdbdbd",
-    borderLeftColor: "#607d8b",
-    borderRightColor: "#555",
+    borderBottomColor: '#bdbdbd',
+    borderLeftColor: '#607d8b',
+    borderRightColor: '#555',
     flex: 1,
-    overflow: "visible",
+    overflow: 'visible',
     zIndex: 5,
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
-    justifyContent: "center"
+    justifyContent: 'center'
   }
+
 });
