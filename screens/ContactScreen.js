@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { Badge } from 'react-native-elements';
+import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
+import { Badge } from "react-native-elements";
+import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
+import { createStackNavigator } from "react-navigation";
 import showContact from "../Controlers/getContacts";
 export default class GetContact extends Component {
   state = {
@@ -12,11 +13,7 @@ export default class GetContact extends Component {
 
   componentDidMount() {
     showContact().then(contact => {
-      console.log("befor");
-      this.setState({
-        contacts: contact,
-        loading: false
-      });
+      this.setState({ contacts: contact, loading: false });
     });
   }
   keyUp = () => {
@@ -40,38 +37,47 @@ export default class GetContact extends Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
+    // console.log("contact: ", this.props.screenProps.contact);
     return (
       <View style={styles.container}>
         <View style={styles.topBottom}>
-          <FontAwesome 
+          <FontAwesome
             name="caret-up"
             onPress={this.keyUp}
-            style={styles.upIcon} 
-            />
+            style={styles.upIcon}
+          />
         </View>
-        <View style={styles.center}>
-        <Badge containerStyle={{ 
-          alignItems: 'center',
-          alignContent: 'center',
-          backgroundColor: 'green'
-          }}>
-          <Text style={{fontSize:25}}>
+
+        <Badge
+          containerStyle={{
+            backgroundColor: "green"
+          }}
+          onPress={() => {
+            this.props.screenProps.passState(
+              this.state.contacts[this.state.index]
+            );
+            navigate("Home");
+          }}
+        >
+          <Text>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].name}
           </Text>
-          <Text style={{fontSize:25}}> 
+          <Text style={{ fontSize: 25 }}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].number}
           </Text>
         </Badge>
-        </View>
+
         <View style={styles.topBottom}>
-          <FontAwesome 
-            name="caret-down" 
+          <FontAwesome
+            name="caret-down"
             onPress={this.keyDown}
-            style={styles.downIcon}/>
+            style={styles.downIcon}
+          />
         </View>
       </View>
     );
@@ -79,20 +85,19 @@ export default class GetContact extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  
+    flex: 1
   },
   topBottom: {
-    height: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f0f0f0'
+    height: "40%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f0f0f0"
   },
-  center : {
-    height: '20%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f0f0f0'
+  center: {
+    height: "20%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f0f0f0"
   },
   upIcon: {
     fontSize: 350,

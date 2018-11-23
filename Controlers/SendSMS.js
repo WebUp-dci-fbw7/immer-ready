@@ -2,7 +2,7 @@ import { Constants, Permissions, Contact } from "expo";
 import { SMS } from "expo";
 import SendSMS from "react-native-sms";
 
-alowSMS = async () => {
+const allowSMS = async (number, { latitude, longitude }) => {
   const permission = await Permissions.askAsync(
     Permissions.CONTACTS,
     Permissions.SMS
@@ -12,8 +12,11 @@ alowSMS = async () => {
     // Permission was denied...
     return;
   }
+
   const { result } = await Expo.SMS.sendSMSAsync(
-    "+4915163180836",
-    "My sample HelloWorld message"
+    number,
+    `https://www.google.com/maps/@${latitude},${longitude},17z`
   );
+  return result;
 };
+export default allowSMS;
