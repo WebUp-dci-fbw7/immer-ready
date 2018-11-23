@@ -48,12 +48,6 @@ export default class Main extends React.Component {
               color: "blue"
             }}
             name="location"
-            onPress={() => {
-              Alert.alert("Send Location!");
-            }}
-          />
-          <Entypo
-            name="location"
             size={85}
             onPress={async () => {
               const location = await getLocationAsync();
