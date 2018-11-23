@@ -3,7 +3,6 @@ import { SMS } from "expo";
 import SendSMS from "react-native-sms";
 
 const allowSMS = async (number, { latitude, longitude }) => {
-  console.log("test", number, latitude, longitude);
   const permission = await Permissions.askAsync(
     Permissions.CONTACTS,
     Permissions.SMS
