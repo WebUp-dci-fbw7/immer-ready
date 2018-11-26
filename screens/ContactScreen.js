@@ -73,6 +73,11 @@ export default class GetContact extends Component {
           <Text style={{ fontSize: 25 }}>
             {this.state.loading
               ? "loading...."
+              : this.state.contacts[this.state.index].name}
+          </Text>
+          <Text style={{ fontSize: 25 }}>
+            {this.state.loading
+              ? "loading...."
               : this.state.contacts[this.state.index].number}
           </Text>
         </Badge>
