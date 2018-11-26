@@ -5876,6 +5876,11 @@ react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
+react-native-phone-call@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-phone-call/-/react-native-phone-call-1.0.9.tgz#4468ec6f95856557fbff9bd69a0db04b54c35e1d"
+  integrity sha512-OPWYg8qeWNG/U4bWGMAKcQTH/ifqJnsvUPCH4lOkvWFHbQS3fbH5M8rFhXCzcfS0GVNzHhZX9ZByMM368TFAUQ==
+
 react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
@@ -5926,12 +5931,13 @@ react-native-sms@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/react-native-sms/-/react-native-sms-1.8.0.tgz#f0cbdc36f94933f634cfbd52b8b91e86fd29a667"
   integrity sha512-UmbDyqKegRTpML0eeHTELVl03WWrq0pRfA7WxFNUcN1MpLqrYFuD9jOizQBJm5jH1FN7caTyk6HnzhAFIbLhyw==
-  react-native-square-grid@^1.0.5:
-    version "1.0.5"
-    resolved "https://registry.yarnpkg.com/react-native-square-grid/-/react-native-square-grid-1.0.5.tgz#284e1eff16716dcf0eb9399495cdb5324b5c2d0e"
-    integrity sha512-vlPZFUWfSfgkWiXSfXlcNJZo0eBgSDb9HSGbYHI26xhrhZshr+PdlZEmWhllA7nF+5RgpY/FWwrZE6KatLo2IA==
-    dependencies:
-      prop-types "^15.6.0"
+
+react-native-square-grid@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-square-grid/-/react-native-square-grid-1.0.5.tgz#284e1eff16716dcf0eb9399495cdb5324b5c2d0e"
+  integrity sha512-vlPZFUWfSfgkWiXSfXlcNJZo0eBgSDb9HSGbYHI26xhrhZshr+PdlZEmWhllA7nF+5RgpY/FWwrZE6KatLo2IA==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-svg@8.0.8:
   version "8.0.8"
@@ -6133,11 +6139,6 @@ react-transform-hmr@^1.0.4:
   dependencies:
     global "^4.3.0"
     react-proxy "^1.1.7"
-
-react-transformicons@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-transformicons/-/react-transformicons-1.0.2.tgz#8d408465b28d00aca4991ee582edb0d125ed702e"
-  integrity sha512-0j2zWdep5ijLlq0omvnOH2SmG65AmGa4260d4oM5cCrwOciSqnzLGpw4xTmXH38HbGe1DKdoG1w+aEIfEN50Ig==
 
 react-tween-state@^0.1.5:
   version "0.1.5"
