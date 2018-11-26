@@ -1,5 +1,12 @@
 import React from "react";
-import { ScrollView, View, Alert, StyleSheet, Text } from "react-native";
+import {
+  ScrollView,
+  View,
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity
+} from "react-native";
 import { Button } from "react-native-elements";
 import { WebBrowser, Permissions, Constants, Location } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
@@ -13,42 +20,40 @@ import {
 import RF from "react-native-responsive-fontsize";
 
 export default class Main extends React.Component {
-  state = {
-    contact: {}
-  };
   static navigationOptions = {
     header: null
   };
 
   render() {
     const { navigate } = this.props.navigation;
-    // console.log(this.props.screenProps.contact.numbers);
-    // console.log(this.props.navigation.getParam);
+
     return (
       <View style={styles.container}>
         <View style={styles.contacts}>
-          <Ionicons
-            name="md-contacts"
-            style={{
-              marginLeft: responsiveWidth(7),
-              marginBottom: responsiveHeight(35),
-              fontSize: RF(22)
-            }}
+          <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Contacts"
+            accessibilityHint="Navigates to the next screen"
             onPress={() => {
               navigate("Secound");
             }}
-          />
+          >
+            <Ionicons
+              name="md-contacts"
+              aria-label="Contacts"
+              style={{
+                marginLeft: responsiveWidth(7),
+                marginBottom: responsiveHeight(24),
+                fontSize: RF(15)
+              }}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.location}>
-          <Entypo
-            style={{
-              marginLeft: responsiveWidth(7),
-              marginBottom: responsiveHeight(35),
-              fontSize: RF(19),
-              color: "blue"
-            }}
-            name="location"
-            size={85}
+          <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Location"
+            accessibilityHint="Send your Location "
             onPress={async () => {
               const location = await getLocationAsync();
               const result = await allowSMS(
@@ -56,20 +61,33 @@ export default class Main extends React.Component {
                 location.coords
               );
             }}
-          />
+          >
+            <Entypo
+              aria-label="Location"
+              style={{
+                marginLeft: responsiveWidth(7),
+                marginBottom: responsiveHeight(24),
+                fontSize: RF(15),
+                color: "blue"
+              }}
+              name="location"
+              size={85}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.phone}>
           <Feather
+            accessible={true}
+            accessibilityLabel="Phone-call"
+            accessibilityHint="call the number you chose"
+            name="phone-call"
             style={{
               marginLeft: responsiveWidth(-15),
+              marginTop: responsiveHeight(15),
               fontSize: RF(17),
               color: "green",
               position: "absolute"
-            }}
-            name="phone-call"
-            onPress={() => {
-              Alert.alert("Call Contact!");
             }}
           />
         </View>

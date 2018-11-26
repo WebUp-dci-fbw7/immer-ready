@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, TextInput, Text, StyleSheet, Alert } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  StyleSheet,
+  Alert,
+  TouchableOpacity
+} from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
@@ -43,6 +50,9 @@ export default class GetContact extends Component {
       <View style={styles.container}>
         <View style={styles.topBottom}>
           <FontAwesome
+            accessible={true}
+            accessibilityLabel="UP"
+            accessibilityHint="click to see the previous number"
             name="caret-up"
             onPress={this.keyUp}
             style={styles.upIcon}
@@ -60,11 +70,6 @@ export default class GetContact extends Component {
             navigate("Home");
           }}
         >
-          <Text>
-            {this.state.loading
-              ? "loading...."
-              : this.state.contacts[this.state.index].name}
-          </Text>
           <Text style={{ fontSize: 25 }}>
             {this.state.loading
               ? "loading...."
@@ -74,6 +79,9 @@ export default class GetContact extends Component {
 
         <View style={styles.topBottom}>
           <FontAwesome
+            accessible={true}
+            accessibilityLabel="Down"
+            accessibilityHint="click to see the next number"
             name="caret-down"
             onPress={this.keyDown}
             style={styles.downIcon}
