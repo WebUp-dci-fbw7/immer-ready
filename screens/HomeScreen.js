@@ -43,8 +43,8 @@ export default class Main extends React.Component {
               aria-label="Contacts"
               style={{
                 marginLeft: responsiveWidth(7),
-                marginBottom: responsiveHeight(35),
-                fontSize: RF(22)
+                marginBottom: responsiveHeight(24),
+                fontSize: RF(15)
               }}
             />
           </TouchableOpacity>
@@ -66,8 +66,8 @@ export default class Main extends React.Component {
               aria-label="Location"
               style={{
                 marginLeft: responsiveWidth(7),
-                marginBottom: responsiveHeight(35),
-                fontSize: RF(19),
+                marginBottom: responsiveHeight(24),
+                fontSize: RF(15),
                 color: "blue"
               }}
               name="location"
@@ -78,16 +78,16 @@ export default class Main extends React.Component {
 
         <View style={styles.phone}>
           <Feather
+            accessible={true}
+            accessibilityLabel="Phone-call"
+            accessibilityHint="call the number you chose"
+            name="phone-call"
             style={{
               marginLeft: responsiveWidth(-15),
+              marginTop: responsiveHeight(15),
               fontSize: RF(17),
               color: "green",
               position: "absolute"
-            }}
-            aria-label="phone-Call"
-            name="phone-call"
-            onPress={() => {
-              Alert.alert("Call Contact!");
             }}
           />
         </View>
