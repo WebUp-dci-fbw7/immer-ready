@@ -85,9 +85,8 @@ export default class Main extends React.Component {
             accessibilityHint="call the number you chose"
             name="phone-call"
             style={{
-              marginLeft: responsiveWidth(-15),
-              marginTop: responsiveHeight(15),
-              fontSize: RF(17),
+              marginLeft: responsiveWidth(-14),
+              fontSize: RF(15),
               color: "green",
               position: "absolute"
             }}
@@ -152,8 +151,6 @@ const styles = StyleSheet.create({
     borderLeftColor: "#607d8b",
     borderRightColor: "#607d8b",
     flex: 1,
-    overflow: "visible",
-    zIndex: 5,
     position: "absolute",
     bottom: 0,
     justifyContent: "center"
