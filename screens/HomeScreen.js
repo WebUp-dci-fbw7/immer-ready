@@ -12,6 +12,8 @@ import { WebBrowser, Permissions, Constants, Location } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import getLocationAsync from "../Controlers/getGeoLocation";
 import allowSMS from "../Controlers/SendSMS";
+
+import call from 'react-native-phone-call'
 import {
   responsiveHeight,
   responsiveWidth,
@@ -88,6 +90,15 @@ export default class Main extends React.Component {
               fontSize: RF(17),
               color: "green",
               position: "absolute"
+            }}
+            onPress={() => {
+              const number = this.props.screenProps.contact.number
+              const phoneCall = {
+                number:`${number}` ,
+                prompt: false
+              }
+
+              call(phoneCall).catch(console.error)
             }}
           />
         </View>

@@ -22,13 +22,13 @@
     "react-native-animatable": "^1.3.0",
     "react-native-easy-grid": "^0.2.0",
     "react-native-elements": "^0.19.1",
-    "react-native-sms": "^1.8.0",
-    "react-navigation": "^2.18.2",
-    "react-router-native": "^4.3.0",
-    "react-native-easy-grid": "^0.2.0",
+    "react-native-phone-call": "^1.0.9",
     "react-native-responsive-dimensions": "^2.0.1",
     "react-native-responsive-fontsize": "^0.1.2",
-    "react-native-square-grid": "^1.0.5"
+    "react-native-sms": "^1.8.0",
+    "react-native-square-grid": "^1.0.5",
+    "react-navigation": "^2.18.2",
+    "react-router-native": "^4.3.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
