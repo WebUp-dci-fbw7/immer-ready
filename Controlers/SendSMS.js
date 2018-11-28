@@ -15,7 +15,7 @@ const allowSMS = async (number, { latitude, longitude }) => {
 
   const { result } = await Expo.SMS.sendSMSAsync(
     number,
-    `https://www.google.com/maps/@${latitude},${longitude},17z`
+    `https://www.google.com/maps/@${latitude},${longitude},17z/`
   );
   return result;
 };
