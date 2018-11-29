@@ -68,7 +68,7 @@ export default class Main extends React.Component {
                   location.coords
 
                 );
-                    console.log(this.props.screenProps.contact.number, location.coords)
+                    
               }
 
             }}
