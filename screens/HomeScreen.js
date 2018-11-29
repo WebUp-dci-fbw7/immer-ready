@@ -97,7 +97,6 @@ export default class Main extends React.Component {
                   number:`${number}` ,
                   prompt: false
                 }
-
               call(phoneCall).catch(console.error)
               }else {
                 Alert.alert('Sorry No Contact')
