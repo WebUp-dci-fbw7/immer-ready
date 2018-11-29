@@ -91,13 +91,18 @@ export default class Main extends React.Component {
               position: "absolute"
             }}
             onPress={() => {
-              const number = this.props.screenProps.contact.number
-              const phoneCall = {
-                number:`${number}` ,
-                prompt: false
-              }
+              if (this.props.screenProps.contact.number) {
+                const number = this.props.screenProps.contact.number
+                const phoneCall = {
+                  number:`${number}` ,
+                  prompt: false
+                }
 
               call(phoneCall).catch(console.error)
+              }else {
+                Alert.alert('Sorry No Contact')
+              }
+
             }}
           />
         </View>
