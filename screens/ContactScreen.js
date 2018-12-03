@@ -25,7 +25,9 @@ export default class GetContact extends Component {
   }
   keyUp = () => {
     if (this.state.index === 0) {
-      return;
+      this.setState({
+        index: this.state.contacts.length - 1
+      });
     } else {
       this.setState({
         index: this.state.index - 1
@@ -35,11 +37,14 @@ export default class GetContact extends Component {
 
   keyDown = () => {
     if (this.state.index >= this.state.contacts.length - 1) {
-      return Alert.alert("Sorry dude No more contacts!");
+      this.setState({
+        index: 0
+      });
     } else {
       this.setState({
         index: this.state.index + 1
       });
+      console.log(this.state.index);
     }
   };
 
