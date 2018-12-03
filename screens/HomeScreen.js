@@ -94,20 +94,23 @@ export default class Main extends React.Component {
             accessibilityHint="call the number you chose"
             name="phone-call"
             style={{
-              marginLeft: responsiveWidth(-15),
-              marginTop: responsiveHeight(15),
-              fontSize: RF(17),
+              marginLeft: responsiveWidth(-14),
+              fontSize: RF(15),
               color: "green",
               position: "absolute"
             }}
             onPress={() => {
-              const number = this.props.screenProps.contact.number
-              const phoneCall = {
-                number:`${number}` ,
-                prompt: false
+              if (this.props.screenProps.contact.number) {
+                const number = this.props.screenProps.contact.number
+                const phoneCall = {
+                  number:`${number}` ,
+                  prompt: false
+                }
+              call(phoneCall).catch(console.error)
+              }else {
+                Alert.alert('Sorry No Contact')
               }
 
-              call(phoneCall).catch(console.error)
             }}
           />
         </View>
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
   location: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#555",
+    backgroundColor: "#607d8b",
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
@@ -157,12 +160,10 @@ const styles = StyleSheet.create({
     borderLeftWidth: responsiveWidth(50),
     borderRightWidth: responsiveWidth(50),
     borderBottomWidth: responsiveWidth(80),
-    borderBottomColor: "#bdbdbd",
+    borderBottomColor: "#b0bec5",
     borderLeftColor: "#607d8b",
-    borderRightColor: "#555",
+    borderRightColor: "#607d8b",
     flex: 1,
-    overflow: "visible",
-    zIndex: 5,
     position: "absolute",
     bottom: 0,
     justifyContent: "center"
