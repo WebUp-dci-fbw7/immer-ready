@@ -1,4 +1,5 @@
 import { Permissions, Contacts } from "expo";
+import _ from "lodash";
 
 const showContact = async () => {
   // Ask for permission to query contacts.
@@ -15,7 +16,14 @@ const showContact = async () => {
         contact => contact.phoneNumbers
       );
 
-      const contactName = filteredContacts.map(contact => ({
+      const sortedContactsByName = _.sortBy(filteredContacts, [
+        function(filter) {
+          return filter.firstName;
+        }
+      ]);
+      console.log(sortedContactsByName);
+
+      const contactName = sortedContactsByName.map(contact => ({
         name: contact.name,
         number: contact.phoneNumbers[0].number
       }));
