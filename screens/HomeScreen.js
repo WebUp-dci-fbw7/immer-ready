@@ -57,11 +57,20 @@ export default class Main extends React.Component {
             accessibilityLabel="Location"
             accessibilityHint="Send your Location "
             onPress={async () => {
-              const location = await getLocationAsync();
-              const result = await allowSMS(
-                this.props.screenProps.contact.number,
-                location.coords
-              );
+              if(!this.props.screenProps.contact.number){
+                Alert.alert('sorry no contact')
+              }else {
+
+                const location = await getLocationAsync();
+                const result = await allowSMS(
+
+                  this.props.screenProps.contact.number,
+                  location.coords
+
+                );
+                    
+              }
+
             }}
           >
             <Entypo
