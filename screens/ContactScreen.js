@@ -15,7 +15,8 @@ export default class GetContact extends Component {
   state = {
     contacts: [],
     index: 0,
-    loading: true
+    loading: true,
+    alpha: 0
   };
 
   componentDidMount() {
@@ -26,25 +27,30 @@ export default class GetContact extends Component {
   keyUp = () => {
     if (this.state.index === 0) {
       this.setState({
-        index: this.state.contacts.length - 1
+        index: this.state.contacts.length - 1,
+        alpha: this.state.contacts[
+          this.state.contacts.length - 1
+        ].name.charCodeAt(0)
       });
     } else {
       this.setState({
-        index: this.state.index - 1
+        index: this.state.index - 1,
+        alpha: this.state.contacts[this.state.index - 1].name.charCodeAt(0)
       });
     }
   };
 
   keyDown = () => {
-    if (this.state.index >= this.state.contacts.length - 1) {
+    if (this.state.index === this.state.contacts.length - 1) {
       this.setState({
-        index: 0
+        index: 0,
+        alpha: this.state.contacts[0].name.charCodeAt(0)
       });
     } else {
       this.setState({
-        index: this.state.index + 1
+        index: this.state.index + 1,
+        alpha: this.state.contacts[this.state.index + 1].name.charCodeAt(0)
       });
-      console.log(this.state.index);
     }
   };
 
