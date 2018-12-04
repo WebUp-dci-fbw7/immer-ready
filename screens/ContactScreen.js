@@ -11,25 +11,32 @@ import { Badge } from "react-native-elements";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
 import showContact from "../Controlers/getContacts";
+import _ from "lodash";
+
 export default class GetContact extends Component {
   state = {
     contacts: [],
     index: 0,
     loading: true,
-    alpha: 0
+    alpha: 0,
+    alphasArray: []
   };
 
   componentDidMount() {
     showContact().then(contact => {
-      this.setState({ contacts: contact, loading: false });
+      this.setState({
+        contacts: contact,
+        loading: false,
+        alphasArray: _.uniq(contact.map(thing => thing.firstChar))
+      });
     });
   }
 
   // Needed only to console.log 'alpha'
 
-  // componentDidUpdate() {
-  //   console.log(String.fromCharCode(this.state.alpha));
-  // }
+  componentDidUpdate() {
+    console.log(this.state.alphasArray);
+  }
 
   keyUp = () => {
     if (this.state.index === 0) {
@@ -111,7 +118,14 @@ export default class GetContact extends Component {
             name="caret-down"
             onPress={this.keyDown}
             onLongPress={() => {
-              console.log(this.state.contacts[this.state.index].firstChar);
+              const firstChar = this.state.contacts[this.state.index].firstChar;
+              console.log(firstChar);
+
+              // const sortedByFirstChar = _.sortBy(firstChar, [
+              //   function(filter) {
+              //     return filter.firstChar;
+              //   }
+              // ]);
             }}
             style={styles.downIcon}
           />
