@@ -21,10 +21,12 @@ const showContact = async () => {
           return filter.firstName;
         }
       ]);
+      // console.log(sortedContactsByName);
 
       const contactName = sortedContactsByName.map(contact => ({
         name: contact.name,
-        number: contact.phoneNumbers[0].number
+        number: contact.phoneNumbers[0].number,
+        firstChar: contact.name.charCodeAt(0)
       }));
       return contactName;
     }

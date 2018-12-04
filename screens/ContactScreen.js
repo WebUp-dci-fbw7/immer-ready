@@ -28,7 +28,7 @@ export default class GetContact extends Component {
   // Needed only to console.log 'alpha'
 
   // componentDidUpdate() {
-  //   console.log(String.fromCharCode(this.state.alpha + 1));
+  //   console.log(String.fromCharCode(this.state.alpha));
   // }
 
   keyUp = () => {
@@ -74,7 +74,7 @@ export default class GetContact extends Component {
             name="caret-up"
             onPress={this.keyUp}
             onLongPress={() => {
-              console.log("Key Up!");
+              console.log("Key Upp!");
             }}
             style={styles.upIcon}
           />
@@ -111,7 +111,7 @@ export default class GetContact extends Component {
             name="caret-down"
             onPress={this.keyDown}
             onLongPress={() => {
-              console.log("Key Down!");
+              console.log(this.state.contacts[this.state.index].firstChar);
             }}
             style={styles.downIcon}
           />
