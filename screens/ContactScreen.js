@@ -24,6 +24,13 @@ export default class GetContact extends Component {
       this.setState({ contacts: contact, loading: false });
     });
   }
+
+  // Needed only to console.log 'alpha'
+
+  // componentDidUpdate() {
+  //   console.log(String.fromCharCode(this.state.alpha + 1));
+  // }
+
   keyUp = () => {
     if (this.state.index === 0) {
       this.setState({
@@ -66,6 +73,9 @@ export default class GetContact extends Component {
             accessibilityHint="click to see the previous number"
             name="caret-up"
             onPress={this.keyUp}
+            onLongPress={() => {
+              console.log("Key Up!");
+            }}
             style={styles.upIcon}
           />
         </View>
@@ -100,6 +110,9 @@ export default class GetContact extends Component {
             accessibilityHint="click to see the next number"
             name="caret-down"
             onPress={this.keyDown}
+            onLongPress={() => {
+              console.log("Key Down!");
+            }}
             style={styles.downIcon}
           />
         </View>
