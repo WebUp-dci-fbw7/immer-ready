@@ -146,7 +146,7 @@ export default class Main extends React.Component {
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
-                Speech.speak('Calling the selected Number',
+                Speech.speak('Well! Calling the selected Number',
                 {
                   language: 'en',
                   pitch: 1.0,
@@ -164,7 +164,7 @@ export default class Main extends React.Component {
                 }
               call(phoneCall).catch(console.error)
               }else {
-                Speech.speak('No contact selected',
+                Speech.speak('Sorry! please select a contact',
                 {
                   language: 'en',
                   pitch: 1.0,
