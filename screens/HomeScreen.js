@@ -26,7 +26,7 @@ export default class Main extends React.Component {
     header: null
   };
   componentDidMount(){
-    Speech.speak('Hello This is Home page',
+    Speech.speak('You are on the Home page!',
     {
       language: 'en',
       pitch: 1.0,
