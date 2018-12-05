@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Button } from "react-native-elements";
-import { WebBrowser, Permissions, Constants, Location } from "expo";
+import { WebBrowser, Permissions, Constants, Location, Speech } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import getLocationAsync from "../Controlers/getGeoLocation";
 import allowSMS from "../Controlers/SendSMS";
@@ -25,8 +25,21 @@ export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
-
+  componentDidMount(){
+    Speech.speak('Hello This is Home page',
+    {
+      language: 'en',
+      pitch: 1.0,
+      rate: 1.0,
+      onStart: ()=> console.log('speak started'),
+      onDone : ()=> console.log('speak done'),
+      onStopped:()=> console.log('speak stopped'),
+      onError:()=> console.log('error')
+    }
+  );
+  }
   render() {
+
     const { navigate } = this.props.navigation;
 
     return (
@@ -37,7 +50,18 @@ export default class Main extends React.Component {
             accessibilityLabel="Contacts"
             accessibilityHint="Navigates to the next screen"
             onPress={() => {
-              navigate("Secound");
+              navigate("Secound")
+              Speech.speak('Contacts',
+              {
+                language: 'en',
+                pitch: 1.0,
+                rate: 1.0,
+                onStart: ()=> console.log('speak started'),
+                onDone : ()=> console.log('speak done'),
+                onStopped:()=> console.log('speak stopped'),
+                onError:()=> console.log('error')
+              }
+            );
             }}
           >
             <Ionicons
@@ -58,8 +82,29 @@ export default class Main extends React.Component {
             accessibilityHint="Send your Location "
             onPress={async () => {
               if(!this.props.screenProps.contact.number){
-                Alert.alert('sorry no contact')
+                Speech.speak('No Contact selected!',
+                {
+                  language: 'en',
+                  pitch: 1.0,
+                  rate: 1.0,
+                  onStart: ()=> console.log('speak started'),
+                  onDone : ()=> console.log('speak done'),
+                  onStopped:()=> console.log('speak stopped'),
+                  onError:()=> console.log('error')
+                }
+              );
               }else {
+                Speech.speak('Well, Your location will be sent to the selected number',
+                {
+                  language: 'en',
+                  pitch: 1.0,
+                  rate: 1.0,
+                  onStart: ()=> console.log('speak started'),
+                  onDone : ()=> console.log('speak done'),
+                  onStopped:()=> console.log('speak stopped'),
+                  onError:()=> console.log('error')
+                }
+              );
 
                 const location = await getLocationAsync();
                 const result = await allowSMS(
@@ -101,6 +146,17 @@ export default class Main extends React.Component {
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
+                Speech.speak('Calling the selected Number',
+                {
+                  language: 'en',
+                  pitch: 1.0,
+                  rate: 1.0,
+                  onStart: ()=> console.log('speak started'),
+                  onDone : ()=> console.log('speak done'),
+                  onStopped:()=> console.log('speak stopped'),
+                  onError:()=> console.log('error')
+                }
+              );
                 const number = this.props.screenProps.contact.number
                 const phoneCall = {
                   number:`${number}` ,
@@ -108,7 +164,17 @@ export default class Main extends React.Component {
                 }
               call(phoneCall).catch(console.error)
               }else {
-                Alert.alert('Sorry No Contact')
+                Speech.speak('No contact selected',
+                {
+                  language: 'en',
+                  pitch: 1.0,
+                  rate: 1.0,
+                  onStart: ()=> console.log('speak started'),
+                  onDone : ()=> console.log('speak done'),
+                  onStopped:()=> console.log('speak stopped'),
+                  onError:()=> console.log('error')
+                }
+              );
               }
 
             }}
