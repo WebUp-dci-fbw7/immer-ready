@@ -20,7 +20,7 @@ import {
   responsiveFontSize
 } from "react-native-responsive-dimensions";
 import RF from "react-native-responsive-fontsize";
-import Speech from 'react-native-speech';
+
 export default class Main extends React.Component {
   static navigationOptions = {
     header: null
