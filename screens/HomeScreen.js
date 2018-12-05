@@ -82,7 +82,7 @@ export default class Main extends React.Component {
             accessibilityHint="Send your Location "
             onPress={async () => {
               if(!this.props.screenProps.contact.number){
-                Speech.speak('No Contact selected!',
+                Speech.speak('Sorry! please select a contact',
                 {
                   language: 'en',
                   pitch: 1.0,
