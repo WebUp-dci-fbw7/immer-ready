@@ -19,14 +19,20 @@ export default class GetContact extends Component {
     loading: true
   };
 
+
+  speakOpt = {
+    language:'en',
+    pitch:1.0,
+    rate:1.0,
+    onError:()=> console.log('error'),
+  }
+
   componentDidMount() {
     Speech.speak('press up or down to select a contact!',
-   {
-     language: 'en',
-     pitch: 1.0,
-     rate: 1.0,
-   }
+this.speakOpt
  );
+
+
     showContact().then(contact => {
       this.setState({ contacts: contact, loading: false });
     });
@@ -35,11 +41,9 @@ export default class GetContact extends Component {
     if (this.state.index === 0) {
       return;
     } else {
-      Speech.speak(this.state.contacts[this.state.index - 1].name,{
-        language: 'en',
-        pitch: 1.0,
-        rate: 1.0,
-      })
+      Speech.speak(this.state.contacts[this.state.index - 1].name,
+      this.speakOpt
+      )
       this.setState({
         index: this.state.index - 1
       });
@@ -50,11 +54,9 @@ export default class GetContact extends Component {
     if (this.state.index >= this.state.contacts.length - 1) {
       return Alert.alert("Sorry dude No more contacts!");
     } else {
-      Speech.speak(this.state.contacts[this.state.index + 1].name,{
-        language: 'en',
-        pitch: 1.0,
-        rate: 1.0,
-      })
+      Speech.speak(this.state.contacts[this.state.index + 1].name,
+      this.speakOpt
+      )
       this.setState({
         index: this.state.index + 1
       });
@@ -86,15 +88,7 @@ export default class GetContact extends Component {
           }}
           onPress={() => {
             Speech.speak('You selected a contact!',
-           {
-             language: 'en',
-             pitch: 1.0,
-             rate: 1.0,
-             onStart: ()=> console.log('speak started'),
-             onDone : ()=> console.log('speak done'),
-             onStopped:()=> console.log('speak stopped'),
-             onError:()=> console.log('error')
-           }
+           this.speakOpt
          );
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]
