@@ -25,10 +25,6 @@ export default class GetContact extends Component {
      language: 'en',
      pitch: 1.0,
      rate: 1.0,
-     onStart: ()=> console.log('speak started'),
-     onDone : ()=> console.log('speak done'),
-     onStopped:()=> console.log('speak stopped'),
-     onError:()=> console.log('error')
    }
  );
     showContact().then(contact => {
@@ -43,10 +39,6 @@ export default class GetContact extends Component {
         language: 'en',
         pitch: 1.0,
         rate: 1.0,
-        onStart: ()=> console.log('speak started'),
-        onDone : ()=> console.log('speak done'),
-        onStopped:()=> console.log('speak stopped'),
-        onError:()=> console.log('error')
       })
       this.setState({
         index: this.state.index - 1
@@ -60,13 +52,8 @@ export default class GetContact extends Component {
     } else {
       Speech.speak(this.state.contacts[this.state.index + 1].name,{
         language: 'en',
-
         pitch: 1.0,
         rate: 1.0,
-        onStart: ()=> console.log('speak started'),
-        onDone : ()=> console.log('speak done'),
-        onStopped:()=> console.log('speak stopped'),
-        onError:()=> console.log('error')
       })
       this.setState({
         index: this.state.index + 1
