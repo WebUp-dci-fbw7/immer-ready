@@ -56,6 +56,31 @@ export default class GetContact extends Component {
     }
   };
 
+  keyLongUp = () => {
+    const unicodeArray = this.state.alphasArray;
+    let currentIndex = unicodeArray.indexOf(this.state.alpha);
+
+    if (currentIndex > 0) {
+      let nextVal = unicodeArray[currentIndex - 1];
+      const index = this.state.contacts.findIndex(
+        contact => contact.firstChar === nextVal
+      );
+      this.setState({
+        index: index,
+        alpha: nextVal
+      });
+    } else {
+      let nextVal = unicodeArray[unicodeArray.length - 1];
+      const index = this.state.contacts.findIndex(
+        contact => contact.firstChar === nextVal
+      );
+      this.setState({
+        index: index,
+        alpha: nextVal
+      });
+    }
+  };
+
   keyDown = () => {
     if (this.state.index === this.state.contacts.length - 1) {
       this.setState({
@@ -90,6 +115,7 @@ export default class GetContact extends Component {
         alpha: nextVal
       });
     }
+    // console.log(this.state.index, this.state.alpha);
   };
 
   render() {
@@ -104,9 +130,7 @@ export default class GetContact extends Component {
             accessibilityHint="click to see the previous number"
             name="caret-up"
             onPress={this.keyUp}
-            onLongPress={() => {
-              console.log("Key Upp!");
-            }}
+            onLongPress={this.keyLongUp}
             style={styles.upIcon}
           />
         </View>
