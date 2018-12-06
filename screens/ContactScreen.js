@@ -70,6 +70,23 @@ export default class GetContact extends Component {
     }
   };
 
+  // keyLongDown = () => {
+  //   () => {
+  //     const unicodeArray = this.state.alphasArray;
+  //     let currentIndex = unicodeArray.indexOf(this.state.alpha);
+  //     let nextVal = unicodeArray[currentIndex + 1];
+  //
+  //     console.log(currentIndex);
+  //     console.log(nextVal);
+  //
+  //     const filter = this.state.contacts.filter(
+  //       contact => contact.firstChar === nextVal
+  //     );
+  //
+  //     console.log(filter[0].name, filter[0].number);
+  //   };
+  // };
+
   render() {
     const { navigate } = this.props.navigation;
     // console.log("contact: ", this.props.screenProps.contact);
@@ -119,6 +136,7 @@ export default class GetContact extends Component {
             accessibilityHint="click to see the next number"
             name="caret-down"
             onPress={this.keyDown}
+            // onLongPress={this.keyLongDown}
             onLongPress={() => {
               const unicodeArray = this.state.alphasArray;
               let currentIndex = unicodeArray.indexOf(this.state.alpha);
@@ -127,11 +145,22 @@ export default class GetContact extends Component {
               console.log(currentIndex);
               console.log(nextVal);
 
-              const filter = this.state.contacts.filter(
+              // const filter = this.state.contacts.filter(
+              //   contact => contact.firstChar === nextVal
+              // );
+
+              // console.log(filter[0]);
+
+              const index = this.state.contacts.findIndex(
                 contact => contact.firstChar === nextVal
               );
 
-              console.log(filter[0].name);
+              console.log(index, this.state.contacts[index]);
+
+              this.setState({
+                index: index,
+                alpha: nextVal
+              });
 
               // let desiredIndex = unicodeArray.indexOf(nextVal);
               // console.log(this.state.contacts[desiredIndex].firstChar);
