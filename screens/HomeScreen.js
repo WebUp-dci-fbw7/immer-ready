@@ -25,17 +25,14 @@ export default class Main extends React.Component {
   static navigationOptions = {
     header: null
   };
+   speakOpt = {
+    language: 'en',
+    pitch: 1.0,
+    rate: 1.0,
+    onError:()=> console.log('error')
+  };
   componentDidMount(){
-    Speech.speak('You are on the Home page!',
-    {
-      language: 'en',
-      pitch: 1.0,
-      rate: 1.0,
-      onStart: ()=> console.log('speak started'),
-      onDone : ()=> console.log('speak done'),
-      onStopped:()=> console.log('speak stopped'),
-      onError:()=> console.log('error')
-    }
+    Speech.speak('Hello This is Home page!',this.speakOpt
   );
   }
   render() {
@@ -51,16 +48,7 @@ export default class Main extends React.Component {
             accessibilityHint="Navigates to the next screen"
             onPress={() => {
               navigate("Secound")
-              Speech.speak('Contacts',
-              {
-                language: 'en',
-                pitch: 1.0,
-                rate: 1.0,
-                onStart: ()=> console.log('speak started'),
-                onDone : ()=> console.log('speak done'),
-                onStopped:()=> console.log('speak stopped'),
-                onError:()=> console.log('error')
-              }
+              Speech.speak('Contacts', this.speakOpt
             );
             }}
           >
@@ -82,28 +70,11 @@ export default class Main extends React.Component {
             accessibilityHint="Send your Location "
             onPress={async () => {
               if(!this.props.screenProps.contact.number){
-                Speech.speak('Sorry! please select a contact',
-                {
-                  language: 'en',
-                  pitch: 1.0,
-                  rate: 1.0,
-                  onStart: ()=> console.log('speak started'),
-                  onDone : ()=> console.log('speak done'),
-                  onStopped:()=> console.log('speak stopped'),
-                  onError:()=> console.log('error')
-                }
+                Speech.speak('Sorry! please select a contact',this.speakOpt
               );
               }else {
                 Speech.speak('Well, Your location will be sent to the selected number',
-                {
-                  language: 'en',
-                  pitch: 1.0,
-                  rate: 1.0,
-                  onStart: ()=> console.log('speak started'),
-                  onDone : ()=> console.log('speak done'),
-                  onStopped:()=> console.log('speak stopped'),
-                  onError:()=> console.log('error')
-                }
+                this.speakOpt
               );
 
                 const location = await getLocationAsync();
@@ -146,7 +117,7 @@ export default class Main extends React.Component {
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
-                Speech.speak('Well! Calling the selected Number',
+                Speech.speak('Calling the selected Number',
                 {
                   language: 'en',
                   pitch: 1.0,
@@ -164,7 +135,7 @@ export default class Main extends React.Component {
                 }
               call(phoneCall).catch(console.error)
               }else {
-                Speech.speak('Sorry! please select a contact',
+                Speech.speak('No contact selected',
                 {
                   language: 'en',
                   pitch: 1.0,
