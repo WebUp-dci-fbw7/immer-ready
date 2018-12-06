@@ -24,10 +24,12 @@ export default class GetContact extends Component {
 
   componentDidMount() {
     showContact().then(contact => {
+      const alphasArray = _.uniq(contact.map(item => item.firstChar));
       this.setState({
         contacts: contact,
         loading: false,
-        alphasArray: _.uniq(contact.map(item => item.firstChar))
+        alphasArray: alphasArray,
+        alpha: alphasArray[0]
       });
     });
   }
@@ -119,10 +121,26 @@ export default class GetContact extends Component {
             onPress={this.keyDown}
             onLongPress={() => {
               const unicodeArray = this.state.alphasArray;
-              let i = 0;
-              let initialIndex = unicodeArray[i];
+              let currentIndex = unicodeArray.indexOf(this.state.alpha);
+              let nextVal = unicodeArray[currentIndex + 1];
 
-              console.log(++unicodeArray[i]);
+              console.log(currentIndex);
+              console.log(nextVal);
+
+              const filter = this.state.contacts.filter(
+                contact => contact.firstChar === nextVal
+              );
+
+              console.log(filter[0].name);
+
+              // let desiredIndex = unicodeArray.indexOf(nextVal);
+              // console.log(this.state.contacts[desiredIndex].firstChar);
+              //
+
+              // console.log(desiredIndex);
+              //
+              // console.log(this.state.contacts[nextVal].name);
+              // console.log(currentIndex, nextVal, unicodeArray);
             }}
             style={styles.downIcon}
           />
