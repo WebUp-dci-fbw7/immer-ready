@@ -70,26 +70,31 @@ export default class GetContact extends Component {
     }
   };
 
-  // keyLongDown = () => {
-  //   () => {
-  //     const unicodeArray = this.state.alphasArray;
-  //     let currentIndex = unicodeArray.indexOf(this.state.alpha);
-  //     let nextVal = unicodeArray[currentIndex + 1];
-  //
-  //     console.log(currentIndex);
-  //     console.log(nextVal);
-  //
-  //     const filter = this.state.contacts.filter(
-  //       contact => contact.firstChar === nextVal
-  //     );
-  //
-  //     console.log(filter[0].name, filter[0].number);
-  //   };
-  // };
+  keyLongDown = () => {
+    const unicodeArray = this.state.alphasArray;
+    let currentIndex = unicodeArray.indexOf(this.state.alpha);
+    let nextVal = unicodeArray[currentIndex + 1];
+
+    if (currentIndex === unicodeArray.length - 1) {
+      this.setState({
+        index: 0,
+        alpha: unicodeArray[0]
+      });
+    } else {
+      const index = this.state.contacts.findIndex(
+        contact => contact.firstChar === nextVal
+      );
+
+      this.setState({
+        index: index,
+        alpha: nextVal
+      });
+    }
+  };
 
   render() {
     const { navigate } = this.props.navigation;
-    // console.log("contact: ", this.props.screenProps.contact);
+
     return (
       <View style={styles.container}>
         <View style={styles.topBottom}>
@@ -136,41 +141,7 @@ export default class GetContact extends Component {
             accessibilityHint="click to see the next number"
             name="caret-down"
             onPress={this.keyDown}
-            // onLongPress={this.keyLongDown}
-            onLongPress={() => {
-              const unicodeArray = this.state.alphasArray;
-              let currentIndex = unicodeArray.indexOf(this.state.alpha);
-              let nextVal = unicodeArray[currentIndex + 1];
-
-              console.log(currentIndex);
-              console.log(nextVal);
-
-              // const filter = this.state.contacts.filter(
-              //   contact => contact.firstChar === nextVal
-              // );
-
-              // console.log(filter[0]);
-
-              const index = this.state.contacts.findIndex(
-                contact => contact.firstChar === nextVal
-              );
-
-              console.log(index, this.state.contacts[index]);
-
-              this.setState({
-                index: index,
-                alpha: nextVal
-              });
-
-              // let desiredIndex = unicodeArray.indexOf(nextVal);
-              // console.log(this.state.contacts[desiredIndex].firstChar);
-              //
-
-              // console.log(desiredIndex);
-              //
-              // console.log(this.state.contacts[nextVal].name);
-              // console.log(currentIndex, nextVal, unicodeArray);
-            }}
+            onLongPress={this.keyLongDown}
             style={styles.downIcon}
           />
         </View>
