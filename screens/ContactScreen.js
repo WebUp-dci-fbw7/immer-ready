@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Badge } from "react-native-elements";
+import {Speech} from 'expo'
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
 import showContact from "../Controlers/getContacts";
@@ -18,7 +19,20 @@ export default class GetContact extends Component {
     loading: true
   };
 
+
+  speakOpt = {
+    language:'en',
+    pitch:1.0,
+    rate:1.0,
+    onError:()=> console.log('error'),
+  }
+
   componentDidMount() {
+    Speech.speak('press up or down to select a contact!',
+this.speakOpt
+ );
+
+
     showContact().then(contact => {
       this.setState({ contacts: contact, loading: false });
     });
@@ -27,6 +41,9 @@ export default class GetContact extends Component {
     if (this.state.index === 0) {
       return;
     } else {
+      Speech.speak(this.state.contacts[this.state.index - 1].name,
+      this.speakOpt
+      )
       this.setState({
         index: this.state.index - 1
       });
@@ -37,19 +54,25 @@ export default class GetContact extends Component {
     if (this.state.index >= this.state.contacts.length - 1) {
       return Alert.alert("Sorry dude No more contacts!");
     } else {
+      Speech.speak(this.state.contacts[this.state.index + 1].name,
+      this.speakOpt
+      )
       this.setState({
         index: this.state.index + 1
       });
     }
   };
 
+
   render() {
+
     const { navigate } = this.props.navigation;
     // console.log("contact: ", this.props.screenProps.contact);
     return (
       <View style={styles.container}>
         <View style={styles.topBottom}>
           <FontAwesome
+
             accessible={true}
             accessibilityLabel="UP"
             accessibilityHint="click to see the previous number"
@@ -64,6 +87,9 @@ export default class GetContact extends Component {
             backgroundColor: "green"
           }}
           onPress={() => {
+            Speech.speak('You selected a contact!',
+           this.speakOpt
+         );
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]
             );
@@ -71,15 +97,18 @@ export default class GetContact extends Component {
           }}
         >
           <Text style={{ fontSize: 25 }}>
+
             {this.state.loading
               ? "loading...."
-              : this.state.contacts[this.state.index].name}
+              :this.state.contacts[this.state.index].name}
+
           </Text>
           <Text style={{ fontSize: 25 }}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].number}
           </Text>
+
         </Badge>
 
         <View style={styles.topBottom}>
