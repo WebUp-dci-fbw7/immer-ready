@@ -59,26 +59,16 @@ export default class GetContact extends Component {
   keyLongUp = () => {
     const unicodeArray = this.state.alphasArray;
     let currentIndex = unicodeArray.indexOf(this.state.alpha);
+    let factor = currentIndex > 0 ? currentIndex : unicodeArray.length;
 
-    if (currentIndex > 0) {
-      let nextVal = unicodeArray[currentIndex - 1];
-      const index = this.state.contacts.findIndex(
-        contact => contact.firstChar === nextVal
-      );
-      this.setState({
-        index: index,
-        alpha: nextVal
-      });
-    } else {
-      let nextVal = unicodeArray[unicodeArray.length - 1];
-      const index = this.state.contacts.findIndex(
-        contact => contact.firstChar === nextVal
-      );
-      this.setState({
-        index: index,
-        alpha: nextVal
-      });
-    }
+    let nextVal = unicodeArray[factor - 1];
+    const index = this.state.contacts.findIndex(
+      contact => contact.firstChar === nextVal
+    );
+    this.setState({
+      index: index,
+      alpha: nextVal
+    });
   };
 
   keyDown = () => {
