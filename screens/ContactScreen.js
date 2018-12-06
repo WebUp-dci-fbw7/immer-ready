@@ -27,16 +27,16 @@ export default class GetContact extends Component {
       this.setState({
         contacts: contact,
         loading: false,
-        alphasArray: _.uniq(contact.map(thing => thing.firstChar))
+        alphasArray: _.uniq(contact.map(item => item.firstChar))
       });
     });
   }
 
   // Needed only to console.log 'alpha'
 
-  componentDidUpdate() {
-    console.log(this.state.alphasArray);
-  }
+  // componentDidUpdate() {
+  //   console.log(this.state.alphasArray);
+  // }
 
   keyUp = () => {
     if (this.state.index === 0) {
@@ -118,14 +118,11 @@ export default class GetContact extends Component {
             name="caret-down"
             onPress={this.keyDown}
             onLongPress={() => {
-              const firstChar = this.state.contacts[this.state.index].firstChar;
-              console.log(firstChar);
+              const unicodeArray = this.state.alphasArray;
+              let i = 0;
+              let initialIndex = unicodeArray[i];
 
-              // const sortedByFirstChar = _.sortBy(firstChar, [
-              //   function(filter) {
-              //     return filter.firstChar;
-              //   }
-              // ]);
+              console.log(++unicodeArray[i]);
             }}
             style={styles.downIcon}
           />
