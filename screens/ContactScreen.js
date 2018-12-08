@@ -44,9 +44,7 @@ this.speakOpt
       Speech.speak(this.state.contacts[this.state.index - 1].name,
       this.speakOpt
       )
-        Speech.speak('up', this.speakOpt),
       this.setState({
-
         index: this.state.index - 1
       });
     }
@@ -59,7 +57,6 @@ this.speakOpt
       Speech.speak(this.state.contacts[this.state.index + 1].name,
       this.speakOpt
       )
-      Speech.speak('down', this.speakOpt),
       this.setState({
         index: this.state.index + 1
       });
@@ -90,7 +87,7 @@ this.speakOpt
             backgroundColor: "green"
           }}
           onPress={() => {
-            Speech.speak('you select number ' + this.state.contacts[this.state.index].name,
+            Speech.speak('You selected a contact!',
            this.speakOpt
          );
             this.props.screenProps.passState(
