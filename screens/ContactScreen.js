@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Badge } from "react-native-elements";
+import { Speech } from "expo";
 import { Ionicons, Octicons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "react-navigation";
 import showContact from "../Controlers/getContacts";
@@ -22,7 +23,16 @@ export default class GetContact extends Component {
     alphasArray: []
   };
 
+  speakOpt = {
+    language: "en",
+    pitch: 1.0,
+    rate: 1.0,
+    onError: () => console.log("error")
+  };
+
   componentDidMount() {
+    Speech.speak("press up or down to select a contact!", this.speakOpt);
+
     showContact().then(contact => {
       const alphasArray = _.uniq(contact.map(item => item.firstChar));
       this.setState({
@@ -34,12 +44,6 @@ export default class GetContact extends Component {
     });
   }
 
-  // Needed only to console.log 'alpha'
-
-  // componentDidUpdate() {
-  //   console.log(this.state.alphasArray);
-  // }
-
   keyUp = () => {
     if (this.state.index === 0) {
       this.setState({
@@ -49,6 +53,10 @@ export default class GetContact extends Component {
         ].name.charCodeAt(0)
       });
     } else {
+      Speech.speak(
+        this.state.contacts[this.state.index - 1].name,
+        this.speakOpt
+      );
       this.setState({
         index: this.state.index - 1,
         alpha: this.state.contacts[this.state.index - 1].name.charCodeAt(0)
@@ -78,6 +86,10 @@ export default class GetContact extends Component {
         alpha: this.state.contacts[0].name.charCodeAt(0)
       });
     } else {
+      Speech.speak(
+        this.state.contacts[this.state.index + 1].name,
+        this.speakOpt
+      );
       this.setState({
         index: this.state.index + 1,
         alpha: this.state.contacts[this.state.index + 1].name.charCodeAt(0)
@@ -105,7 +117,6 @@ export default class GetContact extends Component {
         alpha: nextVal
       });
     }
-    // console.log(this.state.index, this.state.alpha);
   };
 
   render() {
@@ -130,6 +141,7 @@ export default class GetContact extends Component {
             backgroundColor: "green"
           }}
           onPress={() => {
+            Speech.speak("You selected a contact!", this.speakOpt);
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]
             );
