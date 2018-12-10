@@ -45,6 +45,7 @@ export default class GetContact extends Component {
   }
 
   keyUp = () => {
+      Speech.speak('UP', this.speakOpt)
     if (this.state.index === 0) {
       this.setState({
         index: this.state.contacts.length - 1,
@@ -57,7 +58,7 @@ export default class GetContact extends Component {
         this.state.contacts[this.state.index - 1].name,
         this.speakOpt
       );
-      Speech.speak('UP', this.speakOpt)
+
       this.setState({
         index: this.state.index - 1,
         alpha: this.state.contacts[this.state.index - 1].name.charCodeAt(0)
@@ -82,6 +83,7 @@ export default class GetContact extends Component {
   };
 
   keyDown = () => {
+    Speech.speak('down', this.speakOpt)
     if (this.state.index === this.state.contacts.length - 1) {
       this.setState({
         index: 0,
@@ -92,6 +94,7 @@ export default class GetContact extends Component {
         this.state.contacts[this.state.index + 1].name,
         this.speakOpt
       );
+
       this.setState({
         index: this.state.index + 1,
         alpha: this.state.contacts[this.state.index + 1].name.charCodeAt(0)
@@ -143,7 +146,7 @@ export default class GetContact extends Component {
             backgroundColor: "green"
           }}
           onPress={() => {
-            Speech.speak("You selected a contact!" + this.state.contacts[this.state.index].name , this.speakOpt);
+            Speech.speak("You selected" + this.state.contacts[this.state.index].name , this.speakOpt);
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]
             );
