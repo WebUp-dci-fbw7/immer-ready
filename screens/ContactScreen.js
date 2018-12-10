@@ -57,6 +57,7 @@ export default class GetContact extends Component {
         this.state.contacts[this.state.index - 1].name,
         this.speakOpt
       );
+      Speech.speak('UP', this.speakOpt)
       this.setState({
         index: this.state.index - 1,
         alpha: this.state.contacts[this.state.index - 1].name.charCodeAt(0)
@@ -73,6 +74,7 @@ export default class GetContact extends Component {
     const index = this.state.contacts.findIndex(
       contact => contact.firstChar === nextVal
     );
+    Speech.speak('down', this.speakOpt)
     this.setState({
       index: index,
       alpha: nextVal
@@ -141,7 +143,7 @@ export default class GetContact extends Component {
             backgroundColor: "green"
           }}
           onPress={() => {
-            Speech.speak("You selected a contact!", this.speakOpt);
+            Speech.speak("You selected a contact!" + this.state.contacts[this.state.index].name , this.speakOpt);
             this.props.screenProps.passState(
               this.state.contacts[this.state.index]
             );
