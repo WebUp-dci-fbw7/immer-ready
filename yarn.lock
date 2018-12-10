@@ -5932,11 +5932,6 @@ react-native-sms@^1.8.0:
   resolved "https://registry.yarnpkg.com/react-native-sms/-/react-native-sms-1.8.0.tgz#f0cbdc36f94933f634cfbd52b8b91e86fd29a667"
   integrity sha512-UmbDyqKegRTpML0eeHTELVl03WWrq0pRfA7WxFNUcN1MpLqrYFuD9jOizQBJm5jH1FN7caTyk6HnzhAFIbLhyw==
 
-react-native-speech@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-speech/-/react-native-speech-0.1.2.tgz#c16127c6a61351eeddb7878db80709f7ce6a7057"
-  integrity sha1-wWEnxqYTUe7dt4eNuAcJ985qcFc=
-
 react-native-square-grid@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-native-square-grid/-/react-native-square-grid-1.0.5.tgz#284e1eff16716dcf0eb9399495cdb5324b5c2d0e"

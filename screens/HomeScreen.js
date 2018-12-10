@@ -118,15 +118,7 @@ export default class Main extends React.Component {
             onPress={() => {
               if (this.props.screenProps.contact.number) {
                 Speech.speak('Calling the selected Number',
-                {
-                  language: 'en',
-                  pitch: 1.0,
-                  rate: 1.0,
-                  onStart: ()=> console.log('speak started'),
-                  onDone : ()=> console.log('speak done'),
-                  onStopped:()=> console.log('speak stopped'),
-                  onError:()=> console.log('error')
-                }
+                this.speakOpt
               );
                 const number = this.props.screenProps.contact.number
                 const phoneCall = {
@@ -136,15 +128,7 @@ export default class Main extends React.Component {
               call(phoneCall).catch(console.error)
               }else {
                 Speech.speak('No contact selected',
-                {
-                  language: 'en',
-                  pitch: 1.0,
-                  rate: 1.0,
-                  onStart: ()=> console.log('speak started'),
-                  onDone : ()=> console.log('speak done'),
-                  onStopped:()=> console.log('speak stopped'),
-                  onError:()=> console.log('error')
-                }
+                this.speakOpt
               );
               }
 
