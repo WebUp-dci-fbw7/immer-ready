@@ -20,15 +20,17 @@ const allowSMS = async (number, { latitude, longitude }) => {
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&radius=100&key=${apiKey}`
     )
     .then(function(response) {
-      console.log(response.results.data);
+      let mylocation = response.data.results[0].formatted_address;
+      console.log(response.data.results[0].formatted_address);
     })
+
     .catch(function(error) {
       console.log(error);
     });
 
   const { result } = await Expo.SMS.sendSMSAsync(
     number,
-    `https://www.google.com/maps/@${latitude},${longitude},17z/`
+    `I need your help at ${myLocation}! I am situated at: https://www.google.com/maps/@${latitude},${longitude},17z/`
   );
   return result;
 };
