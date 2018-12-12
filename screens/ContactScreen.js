@@ -26,7 +26,7 @@ export default class GetContact extends Component {
   speakOpt = {
     language: "en",
     pitch: 1.0,
-    rate: 1.0,
+    rate: 0.85,
     onError: () => console.log("error")
   };
 
@@ -45,6 +45,7 @@ export default class GetContact extends Component {
   }
 
   keyUp = () => {
+      Speech.stop();
       Speech.speak('UP', this.speakOpt)
     if (this.state.index === 0) {
       this.setState({
@@ -67,6 +68,7 @@ export default class GetContact extends Component {
   };
 
   keyLongUp = () => {
+    Speech.stop();
     const unicodeArray = this.state.alphasArray;
     let currentIndex = unicodeArray.indexOf(this.state.alpha);
     let factor = currentIndex > 0 ? currentIndex : unicodeArray.length;
@@ -75,14 +77,16 @@ export default class GetContact extends Component {
     const index = this.state.contacts.findIndex(
       contact => contact.firstChar === nextVal
     );
-    Speech.speak('down', this.speakOpt)
+    Speech.speak('', this.speakOpt)
     this.setState({
       index: index,
       alpha: nextVal
-    });
+    })
+    Speech.speak(`Jump to the previous letter ${this.state.contacts[this.state.index].name}`);
   };
 
   keyDown = () => {
+    Speech.stop();
     Speech.speak('down', this.speakOpt)
     if (this.state.index === this.state.contacts.length - 1) {
       this.setState({
@@ -103,6 +107,7 @@ export default class GetContact extends Component {
   };
 
   keyLongDown = () => {
+    Speech.stop();
     const unicodeArray = this.state.alphasArray;
     let currentIndex = unicodeArray.indexOf(this.state.alpha);
     let nextVal = unicodeArray[currentIndex + 1];
@@ -120,7 +125,8 @@ export default class GetContact extends Component {
       this.setState({
         index: index,
         alpha: nextVal
-      });
+      })
+      Speech.speak(`Jump to the next letter ${this.state.contacts[this.state.index].name}`);
     }
   };
 
