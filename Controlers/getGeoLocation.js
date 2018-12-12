@@ -13,6 +13,7 @@ const _getLocationAsync = async () => {
     }
   }
   let location = await Location.getCurrentPositionAsync({});
+
   if (location) {
     return location;
   }
