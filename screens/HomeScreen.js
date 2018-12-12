@@ -53,9 +53,10 @@ export default class Main extends React.Component {
               name="md-contacts"
               aria-label="Contacts"
               style={{
-                marginLeft: responsiveWidth(7),
+                marginLeft: responsiveWidth(12),
                 marginBottom: responsiveHeight(24),
-                fontSize: RF(15)
+                fontSize: RF(15),
+                color:'#EDDEC7'
               }}
             />
           </TouchableOpacity>
@@ -85,10 +86,10 @@ export default class Main extends React.Component {
             <Entypo
               aria-label="Location"
               style={{
-                marginLeft: responsiveWidth(7),
+                marginLeft: responsiveWidth(15),
                 marginBottom: responsiveHeight(24),
                 fontSize: RF(15),
-                color: "blue"
+                color: "#EDDEC7"
               }}
               name="location"
               size={85}
@@ -105,7 +106,7 @@ export default class Main extends React.Component {
             style={{
               marginLeft: responsiveWidth(-14),
               fontSize: RF(15),
-              color: "green",
+              color: "#EDDEC7",
               position: "absolute"
             }}
             onPress={() => {
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "yellow",
+    backgroundColor: "black",
     justifyContent: "center",
     position: "absolute",
     top: 0,
@@ -145,23 +146,22 @@ const styles = StyleSheet.create({
   contacts: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#607d8b",
+    backgroundColor: "#BF9788",
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
-    borderLeftColor: "white",
     borderRightColor: "white"
   },
 
   location: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#607d8b",
+    backgroundColor: "#947C66",
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
     borderLeftColor: "white",
-    borderRightColor: "white"
+
   },
 
   phone: {
@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: responsiveWidth(50),
     borderRightWidth: responsiveWidth(50),
     borderBottomWidth: responsiveWidth(80),
-    borderBottomColor: "#b0bec5",
-    borderLeftColor: "#607d8b",
-    borderRightColor: "#607d8b",
+    borderBottomColor: "#99B55D",
+    borderLeftColor: "#BF9788",
+    borderRightColor: "#947C66",
     flex: 1,
     position: "absolute",
     bottom: 0,
