@@ -45,8 +45,8 @@ export default class GetContact extends Component {
   }
 
   keyUp = () => {
-      Speech.stop();
-      Speech.speak('UP', this.speakOpt)
+    Speech.stop();
+    Speech.speak("UP", this.speakOpt);
     if (this.state.index === 0) {
       this.setState({
         index: this.state.contacts.length - 1,
@@ -77,17 +77,21 @@ export default class GetContact extends Component {
     const index = this.state.contacts.findIndex(
       contact => contact.firstChar === nextVal
     );
-    Speech.speak("down", this.speakOpt);
+
     this.setState({
       index: index,
       alpha: nextVal
-    })
-    Speech.speak(`Jump to the previous letter ${this.state.contacts[this.state.index].name}`);
+    });
+    Speech.speak(
+      `Jump to the previous letter ${
+        this.state.contacts[this.state.index].name
+      }`
+    );
   };
 
   keyDown = () => {
     Speech.stop();
-    Speech.speak('down', this.speakOpt)
+    Speech.speak("down", this.speakOpt);
     if (this.state.index === this.state.contacts.length - 1) {
       this.setState({
         index: 0,
@@ -125,8 +129,10 @@ export default class GetContact extends Component {
       this.setState({
         index: index,
         alpha: nextVal
-      })
-      Speech.speak(`Jump to the next letter ${this.state.contacts[this.state.index].name}`);
+      });
+      Speech.speak(
+        `Jump to the next letter ${this.state.contacts[this.state.index].name}`
+      );
     }
   };
 
@@ -192,7 +198,7 @@ export default class GetContact extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#E8E1C4'
+    backgroundColor: "#E8E1C4"
   },
   topBottom: {
     height: "40%",
