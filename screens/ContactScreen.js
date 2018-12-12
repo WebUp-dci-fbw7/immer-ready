@@ -143,7 +143,7 @@ export default class GetContact extends Component {
 
         <Badge
           containerStyle={{
-            backgroundColor: "green"
+            backgroundColor: "#CCAFAC"
           }}
           onPress={() => {
             Speech.speak("You selected" + this.state.contacts[this.state.index].name , this.speakOpt);
@@ -182,19 +182,20 @@ export default class GetContact extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor:'#E8E1C4'
   },
   topBottom: {
     height: "40%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f0f0f0"
+    backgroundColor: "#E8E1C4"
   },
   center: {
     height: "20%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f0f0f0"
+    backgroundColor: "#CCAFAC"
   },
   upIcon: {
     fontSize: 350,
