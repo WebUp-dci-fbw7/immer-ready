@@ -15,7 +15,6 @@ const allowSMS = async (number, { latitude, longitude }) => {
     return;
   }
 
-<<<<<<< HEAD
   try {
     const locationResponse = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&radius=100&key=${apiKey}`
@@ -31,12 +30,5 @@ const allowSMS = async (number, { latitude, longitude }) => {
   } catch (error) {
     console.log(error);
   }
-=======
-  const { result } = await Expo.SMS.sendSMSAsync(
-    number,
-    `https://www.google.com/maps?z=17&q=${latitude},${longitude}/`
-  );
-  return result;
->>>>>>> master
 };
 export default allowSMS;
