@@ -12,8 +12,6 @@ const allowSMS = async (number, { latitude, longitude }) => {
   );
 
   if (permission.status !== "granted") {
-    // Permission was denied...
-
     return;
   }
 
