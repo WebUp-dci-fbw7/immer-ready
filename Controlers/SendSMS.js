@@ -5,6 +5,7 @@ import axios from "axios";
 
 const allowSMS = async (number, { latitude, longitude }) => {
   const apiKey = "AIzaSyABt5mFjSKdrnio24G8WVrcmegYX5G2EOM";
+
   const permission = await Permissions.askAsync(
     Permissions.CONTACTS,
     Permissions.SMS
@@ -12,26 +13,24 @@ const allowSMS = async (number, { latitude, longitude }) => {
 
   if (permission.status !== "granted") {
     // Permission was denied...
+
     return;
   }
 
-  axios
-    .get(
+  try {
+    const locationResponse = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&radius=100&key=${apiKey}`
-    )
-    .then(function(response) {
-      let mylocation = response.data.results[0].formatted_address;
-      console.log(response.data.results[0].formatted_address);
-    })
+    );
 
-    .catch(function(error) {
-      console.log(error);
-    });
+    const myLocation = locationResponse.data.results[0].formatted_address;
 
-  const { result } = await Expo.SMS.sendSMSAsync(
-    number,
-    `I need your help at ${myLocation}! I am situated at: https://www.google.com/maps/@${latitude},${longitude},17z/`
-  );
-  return result;
+    const { result } = await Expo.SMS.sendSMSAsync(
+      number,
+      `I need your help at ${myLocation}! I am situated at: https://www.google.com/maps/@${latitude},${longitude},17z/`
+    );
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export default allowSMS;

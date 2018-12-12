@@ -73,9 +73,8 @@ export default class Main extends React.Component {
                   "Well, Your location will be sent to the selected number",
                   this.speakOpt
                 );
-
                 const location = await getLocationAsync();
-                console.log("test");
+
                 const result = await allowSMS(
                   this.props.screenProps.contact.number,
                   location.coords
