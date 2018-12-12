@@ -26,7 +26,7 @@ const allowSMS = async (number, { latitude, longitude }) => {
 
     const { result } = await Expo.SMS.sendSMSAsync(
       number,
-      `I need your help at ${myLocation}! I am situated at: https://www.google.com/maps/@${latitude},${longitude},17z/`
+      `Hello, I need your help at ${myLocation}! I am situated at: https://www.google.com/maps?z=17&q=${latitude},${longitude}/`
     );
     return result;
   } catch (error) {
