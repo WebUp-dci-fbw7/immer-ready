@@ -2,7 +2,6 @@ import { Constants, Permissions, Contact } from "expo";
 import SendSMS from "react-native-sms-x";
 import { PermissionsAndroid, Alert } from "react-native";
 import axios from "axios";
-import uuidv4 from "uuid/v4";
 
 const allowSMS = async (number, { latitude, longitude }, cb) => {
   const apiKey = "AIzaSyABt5mFjSKdrnio24G8WVrcmegYX5G2EOM";
@@ -36,7 +35,7 @@ const allowSMS = async (number, { latitude, longitude }, cb) => {
     const myLocation = locationResponse.data.results[0].formatted_address;
 
     const result = await SendSMS.send(
-      /// i use the date function to get an unique nummber
+      /// i use the 123 number as unique id
       123,
       number,
       `Hello, I need your help at ${myLocation}! I am situated at: https://www.google.com/maps?z=17&q=${latitude},${longitude}/`,
