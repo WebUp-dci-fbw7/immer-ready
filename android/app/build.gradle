@@ -97,6 +97,7 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation 'com.android.support:multidex:1.0.1'
@@ -179,7 +180,8 @@ dependencies {
     exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     exclude group: 'com.squareup.okhttp3', module: 'okhttp-urlconnection'
   }
-  
+  compile project(':react-native-sms-x')
+  compile project(':react-native-immediate-phone-call')
 
 }
 
