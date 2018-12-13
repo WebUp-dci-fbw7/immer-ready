@@ -12,7 +12,7 @@ import { WebBrowser, Permissions, Constants, Location, Speech } from "expo";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import getLocationAsync from "../Controlers/getGeoLocation";
 import allowSMS from "../Controlers/SendSMS";
-
+import RNImmediatePhoneCall from "react-native-immediate-phone-call";
 import call from "react-native-phone-call";
 import {
   responsiveHeight,
@@ -56,7 +56,7 @@ export default class Main extends React.Component {
                 marginLeft: responsiveWidth(7),
                 marginBottom: responsiveHeight(24),
                 fontSize: RF(20),
-                color:'white'
+                color: "white"
               }}
             />
           </TouchableOpacity>
@@ -75,10 +75,12 @@ export default class Main extends React.Component {
                   this.speakOpt
                 );
                 const location = await getLocationAsync();
-
                 const result = await allowSMS(
                   this.props.screenProps.contact.number,
-                  location.coords
+                  location.coords,
+                  () => {
+                    Speech.speak("message sent successfully");
+                  }
                 );
               }
             }}
@@ -107,17 +109,22 @@ export default class Main extends React.Component {
               fontSize: RF(20),
               color: "black",
               position: "absolute",
-              paddingTop:responsiveHeight(18)
+              paddingTop: responsiveHeight(18)
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
                 Speech.speak("Calling the selected Number", this.speakOpt);
                 const number = this.props.screenProps.contact.number;
-                const phoneCall = {
-                  number: `${number}`,
-                  prompt: false
-                };
-                call(phoneCall).catch(console.error);
+
+                if (this.props.screenProps.phoneCall === true) {
+                  RNImmediatePhoneCall.immediatePhoneCall(number);
+                } else {
+                  const phoneCall = {
+                    number: `${number}`,
+                    prompt: false
+                  };
+                  call(phoneCall).catch(console.error);
+                }
               } else {
                 Speech.speak("No contact selected", this.speakOpt);
               }
@@ -160,8 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
-    borderLeftColor: "white",
-
+    borderLeftColor: "white"
   },
 
   phone: {
