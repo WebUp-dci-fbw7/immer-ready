@@ -53,10 +53,10 @@ export default class Main extends React.Component {
               name="md-contacts"
               aria-label="Contacts"
               style={{
-                marginLeft: responsiveWidth(12),
+                marginLeft: responsiveWidth(7),
                 marginBottom: responsiveHeight(24),
-                fontSize: RF(15),
-                color:'#EDDEC7'
+                fontSize: RF(20),
+                color:'white'
               }}
             />
           </TouchableOpacity>
@@ -86,13 +86,12 @@ export default class Main extends React.Component {
             <Entypo
               aria-label="Location"
               style={{
-                marginLeft: responsiveWidth(15),
+                marginLeft: responsiveWidth(10),
                 marginBottom: responsiveHeight(24),
-                fontSize: RF(15),
-                color: "#EDDEC7"
+                fontSize: RF(20),
+                color: "white"
               }}
-              name="location"
-              size={85}
+              name="location-pin"
             />
           </TouchableOpacity>
         </View>
@@ -104,10 +103,11 @@ export default class Main extends React.Component {
             accessibilityHint="call the number you chose"
             name="phone-call"
             style={{
-              marginLeft: responsiveWidth(-14),
-              fontSize: RF(15),
-              color: "#EDDEC7",
-              position: "absolute"
+              marginLeft: responsiveWidth(-17),
+              fontSize: RF(20),
+              color: "black",
+              position: "absolute",
+              paddingTop:responsiveHeight(18)
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   contacts: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#BF9788",
+    backgroundColor: "black",
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   location: {
     width: responsiveWidth(50),
     height: responsiveHeight(100),
-    backgroundColor: "#947C66",
+    backgroundColor: "black",
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: responsiveWidth(50),
     borderRightWidth: responsiveWidth(50),
     borderBottomWidth: responsiveWidth(80),
-    borderBottomColor: "#99B55D",
-    borderLeftColor: "#BF9788",
-    borderRightColor: "#947C66",
+    borderBottomColor: "white",
+    borderLeftColor: "black",
+    borderRightColor: "black",
     flex: 1,
     position: "absolute",
     bottom: 0,
