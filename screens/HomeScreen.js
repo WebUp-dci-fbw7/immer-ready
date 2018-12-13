@@ -86,7 +86,7 @@ export default class Main extends React.Component {
             <Entypo
               aria-label="Location"
               style={{
-                marginLeft: responsiveWidth(10),
+                marginLeft: responsiveWidth(7),
                 marginBottom: responsiveHeight(24),
                 fontSize: RF(20),
                 color: "white"
