@@ -141,8 +141,9 @@ export default class GetContact extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.topBottom}>
+        <View style={styles.topBottom} >
           <FontAwesome
+
             accessible={true}
             accessibilityLabel="UP"
             accessibilityHint="click to see the previous number"
@@ -155,7 +156,7 @@ export default class GetContact extends Component {
 
         <Badge
           containerStyle={{
-            backgroundColor: "#CCAFAC"
+            backgroundColor: "black"
           }}
           onPress={() => {
             Speech.speak(
@@ -168,12 +169,12 @@ export default class GetContact extends Component {
             navigate("Home");
           }}
         >
-          <Text style={{ fontSize: 25 }}>
+          <Text style={{ fontSize: 25, color:'white' }}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].name}
           </Text>
-          <Text style={{ fontSize: 25 }}>
+          <Text style={{ fontSize: 25, color:'white' }}>
             {this.state.loading
               ? "loading...."
               : this.state.contacts[this.state.index].number}
@@ -198,25 +199,29 @@ export default class GetContact extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8E1C4"
+    backgroundColor: "black"
   },
   topBottom: {
     height: "40%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#E8E1C4"
+    backgroundColor: "black"
   },
   center: {
     height: "20%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#CCAFAC"
+    backgroundColor: "black",
+    color:'white'
   },
   upIcon: {
     fontSize: 350,
-    marginBottom: 35
+    marginBottom: 35,
+    color:'white'
+
   },
   downIcon: {
-    fontSize: 350
+    fontSize: 350,
+    color:'white'
   }
 });
