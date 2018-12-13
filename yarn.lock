@@ -5966,6 +5966,11 @@ react-native-screens@^1.0.0-alpha.11:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.16.tgz#e3651b7077ea8fa04e8dd3265ad9b87f1f77a758"
   integrity sha512-t+/aq5jQa+Is6afiQHa1P+2UPnwPGY9NT0pSqNr2zQ5llCn8TcPq6GN8xDMuEc08g+y/9R5zWo32hlVStwWn1A==
 
+react-native-sms-x@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-sms-x/-/react-native-sms-x-1.0.6.tgz#33d0a0a9851d7c05d5e45a05ed8e3d207ef7b1c1"
+  integrity sha512-1GScpwR3ET8q9h73R8UpnQBeCEwMxX6WPAoxVU4/ZsdTF1mjn35Udgm7TNaYzh6BW+2WXGUwwd96jwVPK/IPww==
+
 react-native-sms@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/react-native-sms/-/react-native-sms-1.8.0.tgz#f0cbdc36f94933f634cfbd52b8b91e86fd29a667"

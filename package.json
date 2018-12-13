@@ -30,9 +30,11 @@
     "react-native-responsive-dimensions": "^2.0.1",
     "react-native-responsive-fontsize": "^0.1.2",
     "react-native-sms": "^1.8.0",
+    "react-native-sms-x": "^1.0.6",
     "react-native-square-grid": "^1.0.5",
     "react-navigation": "^2.18.2",
-    "react-router-native": "^4.3.0"
+    "react-router-native": "^4.3.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
