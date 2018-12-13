@@ -35,8 +35,9 @@ const allowSMS = async (number, { latitude, longitude }, cb) => {
 
     const myLocation = locationResponse.data.results[0].formatted_address;
 
-    const { result } = await await SendSMS.send(
-      uuidv4(),
+    const result = await SendSMS.send(
+      /// i use the date function to get an unique nummber
+      123,
       number,
       `Hello, I need your help at ${myLocation}! I am situated at: https://www.google.com/maps?z=17&q=${latitude},${longitude}/`,
       cb
@@ -44,6 +45,7 @@ const allowSMS = async (number, { latitude, longitude }, cb) => {
     return result;
   } catch (error) {
     Alert.alert("something went wrong please try again");
+    console.error(error);
   }
 };
 export default allowSMS;
