@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project",
+  "name": "immer",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "eslint": "^5.9.0",
     "expo": "^31.0.2",
+    "expokit": "31.0.2",
     "lodash": "^4.17.11",
     "native-base": "^2.8.1",
     "react": "16.5.0",
