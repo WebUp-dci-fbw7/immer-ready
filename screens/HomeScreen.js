@@ -32,7 +32,7 @@ export default class Main extends React.Component {
     onError: () => console.log("error")
   };
   componentDidMount() {
-    Speech.speak("Hello This is Home page!", this.speakOpt);
+    Speech.speak("Hello This is Home page   !press left to choose contact!", this.speakOpt);
   }
   render() {
     const { navigate } = this.props.navigation;
