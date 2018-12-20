@@ -4,11 +4,12 @@ import { AppLoading, Asset, Font, Icon } from "expo";
 import AppNavigator from "./navigation/Switch";
 
 import showContact from "./Controlers/getContacts";
-
+import requestPhonePermission from "./Controlers/PhoneCall";
 export default class App extends React.Component {
   state = {
     contact: {},
-    isLoadingComplete: false
+    isLoadingComplete: false,
+    phoneCall: false
   };
 
   passState = contact => {
@@ -16,6 +17,13 @@ export default class App extends React.Component {
       contact
     });
   };
+  componentDidMount() {
+    requestPhonePermission().then(allowed => {
+      this.setState({
+        phoneCall: allowed
+      });
+    });
+  }
 
   render() {
     return (
@@ -24,7 +32,8 @@ export default class App extends React.Component {
         <AppNavigator
           screenProps={{
             contact: this.state.contact,
-            passState: this.passState
+            passState: this.passState,
+            phoneCall: this.state.phoneCall
           }}
         />
       </View>
