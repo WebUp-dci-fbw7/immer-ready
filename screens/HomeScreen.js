@@ -32,7 +32,7 @@ export default class Main extends React.Component {
     onError: () => console.log("error")
   };
   componentDidMount() {
-    Speech.speak("Hello This is Home page   !press left to choose contact!", this.speakOpt);
+    Speech.speak(" press left to choose contact!", this.speakOpt);
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -56,7 +56,7 @@ export default class Main extends React.Component {
                 marginLeft: responsiveWidth(7),
                 marginBottom: responsiveHeight(24),
                 fontSize: RF(20),
-                color:'white'
+                color: "white"
               }}
             />
           </TouchableOpacity>
@@ -107,7 +107,7 @@ export default class Main extends React.Component {
               fontSize: RF(20),
               color: "black",
               position: "absolute",
-              paddingTop:responsiveHeight(18)
+              paddingTop: responsiveHeight(18)
             }}
             onPress={() => {
               if (this.props.screenProps.contact.number) {
@@ -160,8 +160,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRightWidth: responsiveWidth(0.2),
     borderLeftWidth: responsiveWidth(0.2),
-    borderLeftColor: "white",
-
+    borderLeftColor: "white"
   },
 
   phone: {
