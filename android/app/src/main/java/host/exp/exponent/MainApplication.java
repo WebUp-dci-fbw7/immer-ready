@@ -10,8 +10,10 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
  import com.facebook.react.ReactApplication;
+import com.heanoria.library.reactnative.locationenabler.RNAndroidLocationEnablerPackage;
 import com.github.wumke.RNImmediatePhoneCall.RNImmediatePhoneCallPackage;
 import com.someone.sendsms.SendSMSPackage;
+import com.heanoria.library.reactnative.locationenabler.RNAndroidLocationEnablerPackage;import com.heanoria.library.reactnative.locationenabler.RNAndroidLocationEnablerPackage;
 
 public class MainApplication extends ExpoApplication {
 
@@ -28,6 +30,7 @@ public class MainApplication extends ExpoApplication {
 
         // Needed for `react-native link`
          //new MainReactPackage(),
+            new RNAndroidLocationEnablerPackage(),
             new RNImmediatePhoneCallPackage(),
             new SendSMSPackage()
 
