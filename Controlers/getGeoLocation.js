@@ -18,7 +18,7 @@ const _getLocationAsync = async () => {
 
   if (permission.status !== "granted") {
     // Permission was denied...
-    console.log("tets");
+
     Alert.alert(" Permission was denied...");
     return;
   }

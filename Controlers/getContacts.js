@@ -21,7 +21,6 @@ const showContact = async () => {
           return filter.firstName;
         }
       ]);
-      // console.log(sortedContactsByName);
 
       const contactName = sortedContactsByName.map(contact => ({
         name: contact.name,

@@ -23,7 +23,7 @@ const allowSMS = async (number, { latitude, longitude }, cb) => {
     return;
   }
   if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-    console.log("Permission was denied...");
+    Alert.alert("Permission was denied...");
     return;
   }
 
