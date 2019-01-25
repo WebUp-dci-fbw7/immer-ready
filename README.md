@@ -1,2 +1,2 @@
 # immer-ready
-An assistance app for blind users
+An app designed for visually impaired 
